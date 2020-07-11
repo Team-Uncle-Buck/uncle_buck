@@ -13,3 +13,7 @@
 - https://www.madfientist.com/about/
 
 ## Code References
+- Thanks to "ElPastor" for the tip on formatting numbers as currency in Python:
+  - https://stackoverflow.com/users/6163621/elpastor
+  - https://stackoverflow.com/a/42753618
+- 
