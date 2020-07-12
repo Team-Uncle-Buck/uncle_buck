@@ -1,6 +1,7 @@
 import time
+import math
 
-class user(object):
+class User(object):
     """holds the key data points for a user"""
     def __init__(self, age, annualIncomeAfterTaxes, annualExpenses, annualSavings, 
                  currentPortfolioBal, annualROR, riskTolerance):
@@ -19,10 +20,13 @@ class user(object):
         self.withdrawalRate = None 
         self.withdrawalAmt = None
         self.yearsToDeplete = None
+    def __str__(self):
+        return str(self.__class__) + ": " + str(self.__dict__)
 
 def getUserInput():
     """prompts user to input key data required for calcs"""
-    if (0):
+    if (1):
+        if (v): print('*** getting user input')
         age = int(input("What is your current age? (round to the nearest year)\n"))
         print("\nFor the following amounts, please round to the nearest $1,000.")
         annualIncomeAfterTaxes, annualExpenses, annualSavings, riskTolerance = 1,1,1,0
@@ -34,39 +38,71 @@ def getUserInput():
                                       f"${annualIncomeAfterTaxes-annualExpenses}.\n"))
             if (annualIncomeAfterTaxes - annualExpenses - annualSavings != 0):
                 print("Income minus Expenses minus Savings must equal $0, please re-enter amounts.")
-        currentPortfolioBal = int(input("What is current balance of your savings and retirement funds?\n"))
-        annualROR = float(input("What is your expected annual rate of return on investments (after inflation)? Enter a %:\n"))
+        currentPortfolioBal = int(input("What is current balance of your savings and retirement funds (or -debt)?\n"))
+        annualROR = float(input("What is your expected annual rate of return on investments after inflation?\n(Enter percentage like 5.1% as 5.1)\n"))
         while (riskTolerance < 1 or riskTolerance > 3):
             riskTolerance = int(input("What is your risk tolerance?\n1 = low, so save a little extra,\n"+
                                       "2 = medium, save the generally recommended amount, or\n"+
                                       "3 = high, save the absolute miminum for the exercise:\n"))
-        return user(age, annualIncomeAfterTaxes, annualExpenses, annualSavings, 
+        return User(age, annualIncomeAfterTaxes, annualExpenses, annualSavings, 
                     currentPortfolioBal, annualROR, riskTolerance)
     else: # this is dummy data for development purposes
-        return user(40, 50000, 20000, 30000, 0, 5.0, 2)
+        if (v): print("*** using default user")
+        return User(40, 50000, 20000, 30000, 0, 5.0, 2)
 
 def calcSavingsRate(annualSavings, annualIncomeAfterTaxes):
     sr = round(annualSavings / annualIncomeAfterTaxes * 100, 0)
     return sr
 
-def yearsToRetire(user):
+def retireCalcs(user):
     """calculates the years to retire based on user input"""
+    if (v): print('*** calculating retirement numbers')
+    
     if user.riskTolerance == 3: user.multiplier = 20
     elif user.riskTolerance == 2: user.multiplier = 25
     else: user.multiplier = 30
 
     user.savingsRate = calcSavingsRate(user.annualSavings, user.annualIncomeAfterTaxes)
     user.amtNeededToRetire = user.annualExpenses * user.multiplier
-    user.amtNeededToSave = user.amtNeededToRetire - user.currentPortfolioBal
-    user.yearsToRetire = round( (user.amtNeededToSave / user.annualSavings), 2)
-    user.withdrawalRate = round(user.annualExpenses / user.amtNeededToRetire * 100, 1)
-    user.withdrawalRate = float(input(f"What is your expected annual withdrawal rate? "+
-                                 f"Based on your previous answers it should be about "+
-                                 f"{user.withdrawalRate}%. Make it a little lower to "+
-                                 f"be more conservative, or higher to be risky. Lower "+
-                                 f"rates means your savings will last longer.\n"))
+    user.amtNeededToSave = user.amtNeededToRetire - user.currentPortfolioBal    
+    user.yearsToRetire = calcYearsToRetire(user)    
+    user.withdrawalRate = getWithdrawalRate(user)
     user.withdrawalAmt = user.withdrawalRate / 100 * user.amtNeededToRetire
-    user.yearsToDeplete = round(user.amtNeededToRetire / user.withdrawalAmt, 1)
+    user.yearsToDeplete = calcYearsToDeplete(user)
+
+def tvmPeriods(PV, C, r, FV):
+    """this function calculates the number of periods (years) it takes to get from the present value (PV) to the future value (FV) given a periodic rate (r) and periodic payment (C) """
+    r /= 100
+    n = (FV * r + C)
+    n = n / (PV * r + C)
+    n = math.log(n)
+    n = n / (math.log(1 + r))
+    n = math.ceil(n * 10) / 10
+    return n
+
+def calcYearsToRetire(user):
+    """calculates the number of years it will take user to retire given their stats"""
+    if (v): print('*** calculating number of years until retirement funds are accumulated')
+    return tvmPeriods(user.currentPortfolioBal, user.annualSavings, user.annualROR, user.amtNeededToRetire)
+
+def getWithdrawalRate(user):
+    withRate = round(user.annualExpenses / user.amtNeededToRetire * 100, 1)
+    print(f"What is your expected annual withdrawal rate? Based on your previous answers it should be about {withRate}% to maintain your current lifestyle in retirement. Make it a little lower to be more conservative, or higher to be risky. Lower rates means your savings will last longer.")
+    withRate = float(input(f"(Enter percentage like 4.0% as 4.0)\n"))
+    return withRate
+
+def calcYearsToDeplete(user):
+    """ calculates the number of years it will take to deplete retirement funds"""
+    # n2= tvmPeriods(user.amtNeededToRetire, user.withdrawalAmt*-1, user.annualROR, 0)
+    wa = user.withdrawalAmt
+    r = user.annualROR / 100
+    n = (1 / wa) * r * user.amtNeededToRetire
+    n = 1 - n
+    n = max( (1 / n), 0.000001 )
+    n = math.log(n)
+    n = n / ( math.log(1 + r) )
+    n = math.ceil(n * 10) / 10
+    return n
 
 def printResults(user):
     """prints the results of the years to retire calculator"""
@@ -74,18 +110,23 @@ def printResults(user):
     print(f"By saving "+ pC(user.annualSavings) +" per year, it will take you "+
           f"{user.yearsToRetire} years to save "+pC(user.amtNeededToRetire)+". At which point "+
           f"you will withdraw no more than {user.withdrawalRate}% or "+
-          pC(user.withdrawalAmt)+f" per year. These funds should last you {user.yearsToDeplete} years.")
+          pC(user.withdrawalAmt)+f" per year.", end = " ")
+    if (user.yearsToDeplete < 0):
+        print("These funds should only grow over time.")
+    else:
+        print(f"These funds should last you {user.yearsToDeplete} years.")
 
 def pC(n):
+    """format string that takes a number and formats it for currency"""
     return ("${:0,.0f}".format(n).replace('$-','-$'))
 
 if __name__ == "__main__":
     startTime = time.time()
     
-    v = False
-    
+    v = 0
+
     user = getUserInput()
-    yearsToRetire(user)
+    retireCalcs(user)
     printResults(user)    
     
     print('\ntotal running time:',time.time()-startTime,'seconds')

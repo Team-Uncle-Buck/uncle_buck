@@ -16,4 +16,7 @@
 - Thanks to "ElPastor" for the tip on formatting numbers as currency in Python:
   - https://stackoverflow.com/users/6163621/elpastor
   - https://stackoverflow.com/a/42753618
+- Thanks to "user394430" for the tip on printing all elements of a Python object to string:
+  - https://stackoverflow.com/users/394430/user394430
+  - https://stackoverflow.com/a/32635523
 - 
