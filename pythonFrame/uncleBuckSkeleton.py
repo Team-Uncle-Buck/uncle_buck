@@ -1,6 +1,8 @@
 import time
 import math
 
+CK_MIN = 0.000001
+
 class User(object):
     """holds the key data points for a user"""
     def __init__(self, age, annualIncomeAfterTaxes, annualExpenses, annualSavings, 
@@ -27,21 +29,23 @@ def getUserInput():
     """prompts user to input key data required for calcs"""
     if (1):
         if (v): print('*** getting user input')
-        age = int(input("What is your current age? (round to the nearest year)\n"))
-        print("\nFor the following amounts, please round to the nearest $1,000.")
+        age = int(input("\nWhat is your current age?\n(round to the nearest year)\n"))
+        print("\nFor the following amounts, please round to the nearest thousand. Enter amounts in this format 15000 with no commas or currency symbols.")
         annualIncomeAfterTaxes, annualExpenses, annualSavings, riskTolerance = 1,1,1,0
         while (annualIncomeAfterTaxes - annualExpenses - annualSavings != 0):
-            annualIncomeAfterTaxes = int(input("What is your annual income after taxes?\n"))
-            annualExpenses = int(input("What is the total amount of your annual expenses?\n"))
-            annualSavings = int(input(f"What is the total amount you put into savings annually? "+
-                                      f"Based on your previous answers, it should be "+
-                                      f"${annualIncomeAfterTaxes-annualExpenses}.\n"))
+            annualIncomeAfterTaxes = int(input("\nWhat is your annual income after taxes?\n"))
+            annualExpenses = int(input("\nWhat is the total amount of your annual expenses?\n"))
+            if annualExpenses <= 0:
+                print("No expenses?!? You're already ready to retire!")
+                exit(0)
+            annualSavings = int(input(f"\nWhat is the total amount you put into savings annually? Based on your previous answers, it should be " + pC(annualIncomeAfterTaxes-annualExpenses) +".\n"))
             if (annualIncomeAfterTaxes - annualExpenses - annualSavings != 0):
                 print("Income minus Expenses minus Savings must equal $0, please re-enter amounts.")
-        currentPortfolioBal = int(input("What is current balance of your savings and retirement funds (or -debt)?\n"))
-        annualROR = float(input("What is your expected annual rate of return on investments after inflation?\n(Enter percentage like 5.1% as 5.1)\n"))
+        currentPortfolioBal = int(input("\nWhat is current balance of your net savings and retirement funds?\n(or debt, enter a negative value for net debt)\n"))
+        annualROR = float(input("\nWhat is your expected annual rate of return on investments after inflation?\n(Enter a percentage, for example enter 5.0% as 5.0)\n"))
+        annualROR = max(annualROR, CK_MIN)
         while (riskTolerance < 1 or riskTolerance > 3):
-            riskTolerance = int(input("What is your risk tolerance?\n1 = low, so save a little extra,\n"+
+            riskTolerance = int(input("\nWhat is your risk tolerance?\n1 = low, so save a little extra,\n"+
                                       "2 = medium, save the generally recommended amount, or\n"+
                                       "3 = high, save the absolute miminum for the exercise:\n"))
         return User(age, annualIncomeAfterTaxes, annualExpenses, annualSavings, 
@@ -87,8 +91,8 @@ def calcYearsToRetire(user):
 
 def getWithdrawalRate(user):
     withRate = round(user.annualExpenses / user.amtNeededToRetire * 100, 1)
-    print(f"What is your expected annual withdrawal rate? Based on your previous answers it should be about {withRate}% to maintain your current lifestyle in retirement. Make it a little lower to be more conservative, or higher to be risky. Lower rates means your savings will last longer.")
-    withRate = float(input(f"(Enter percentage like 4.0% as 4.0)\n"))
+    print(f"\nWhat is your expected annual withdrawal rate? Based on your previous answers it should be about {withRate}% to maintain your current lifestyle into retirement. Make it a little lower to be more conservative, or higher to be risky. Lower rates means your savings will last longer.")
+    withRate = float(input(f"(Enter a percentage, for example enter 4.0% as 4.0)\n"))
     return withRate
 
 def calcYearsToDeplete(user):
@@ -106,15 +110,11 @@ def calcYearsToDeplete(user):
 
 def printResults(user):
     """prints the results of the years to retire calculator"""
-    print(f"Annual Savings Rate (of after tax income) is {user.savingsRate}%")
-    print(f"By saving "+ pC(user.annualSavings) +" per year, it will take you "+
-          f"{user.yearsToRetire} years to save "+pC(user.amtNeededToRetire)+". At which point "+
-          f"you will withdraw no more than {user.withdrawalRate}% or "+
-          pC(user.withdrawalAmt)+f" per year.", end = " ")
+    print(f"\nYour annual savings rate (of after tax income) is {user.savingsRate}%. Starting with your current savings of " + pC(user.currentPortfolioBal) + " plus saving and additional " + pC(user.annualSavings) + " per year, you will accumulate " + pC(user.amtNeededToRetire) + f" in {user.yearsToRetire} years. You will be {user.age + user.yearsToRetire}. At that point you can begin withdrawing no more than {user.withdrawalRate}% which is " + pC(user.withdrawalAmt) + f" per year. Considering your expected average annual return on investment of {user.annualROR}%, ", end = " ")
     if (user.yearsToDeplete < 0):
-        print("These funds should only grow over time.")
+        print(f"these funds will hopefully outlast you, and even grow over time.")
     else:
-        print(f"These funds should last you {user.yearsToDeplete} years.")
+        print(f"These funds should last you {user.yearsToDeplete} years, or until you are {user.age + user.yearsToDeplete}.")
 
 def pC(n):
     """format string that takes a number and formats it for currency"""
