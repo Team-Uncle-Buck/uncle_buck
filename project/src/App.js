@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Uncle Buck project BEGINS!
+          Uncle Buck project BEGINS!!
         </a>
       </header>
     </div>
