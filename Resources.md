@@ -19,6 +19,10 @@
 - Thanks to "user394430" for the tip on printing all elements of a Python object to string:
   - https://stackoverflow.com/users/394430/user394430
   - https://stackoverflow.com/a/32635523
+- Navigation Bar code referred from 
+  - https://react-bootstrap.github.io/components/navbar/
+- Jumbotron code referred from
+  - https://react-bootstrap.github.io/components/jumbotron/
 
 ## Miscellaneous
 - [Code of Conduct](CodeOfConduct.md) - we borrowed the code of conduct template from [Contributor Covenant](https://www.contributor-covenant.org/)
