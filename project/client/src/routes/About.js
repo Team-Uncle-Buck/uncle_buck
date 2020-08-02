@@ -50,7 +50,7 @@ class About extends React.Component {
         ) : (
           <Container>
             <Row>
-              <Col> 
+              <Col>
                 <AboutText />
               </Col>
               <Col xs lg="3">
