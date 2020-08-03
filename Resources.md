@@ -23,3 +23,6 @@
   - https://react-bootstrap.github.io/components/navbar/
 - Jumbotron code referred from:
   - https://react-bootstrap.github.io/components/jumbotron/
+
+## Miscellaneous
+- [Code of Conduct](CodeOfConduct.md) - we borrowed the code of conduct template from [Contributor Covenant](https://www.contributor-covenant.org/)
