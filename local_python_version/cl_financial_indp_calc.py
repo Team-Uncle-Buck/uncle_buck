@@ -41,6 +41,8 @@ def getUserInput():
             annualSavings = int(input(f"\nWhat is the total amount you put into savings annually? Based on your previous answers, it should be " + pC(annualIncomeAfterTaxes-annualExpenses) +".\n"))
             if (annualIncomeAfterTaxes - annualExpenses - annualSavings != 0):
                 print("Income minus Expenses minus Savings must equal $0, please re-enter amounts.")
+        if (annualSavings <= 0):
+            print("Your current expense are greater than your income. If you don't currently have enough money saved for retirement, then your first priority needs to be either (better yet, both) increasing your income or (and) decreasing your expeses.\n")
         currentPortfolioBal = int(input("\nWhat is current balance of your net savings and retirement funds?\n(or debt, enter a negative value for net debt)\n"))
         annualROR = float(input("\nWhat is your expected annual rate of return on investments after inflation?\n(Enter a percentage, for example enter 5.0% as 5.0)\n"))
         annualROR = max(annualROR, CK_MIN)
@@ -87,7 +89,10 @@ def tvmPeriods(PV, C, r, FV):
 def calcYearsToRetire(user):
     """calculates the number of years it will take user to retire given their stats"""
     if (v): print('*** calculating number of years until retirement funds are accumulated')
-    return tvmPeriods(user.currentPortfolioBal, user.annualSavings, user.annualROR, user.amtNeededToRetire)
+    if (user.annualSavings <= 0):
+        return float("inf")
+    else:
+        return tvmPeriods(user.currentPortfolioBal, user.annualSavings, user.annualROR, user.amtNeededToRetire)
 
 def getWithdrawalRate(user):
     withRate = round(user.annualExpenses / user.amtNeededToRetire * 100, 1)
@@ -110,11 +115,16 @@ def calcYearsToDeplete(user):
 
 def printResults(user):
     """prints the results of the years to retire calculator"""
-    print(f"\nYour annual savings rate (of after tax income) is {user.savingsRate}%. Starting with your current savings of " + pC(user.currentPortfolioBal) + " plus saving and additional " + pC(user.annualSavings) + " per year, you will accumulate " + pC(user.amtNeededToRetire) + f" in {user.yearsToRetire} years. You will be {user.age + user.yearsToRetire}. At that point you can begin withdrawing no more than {user.withdrawalRate}% which is " + pC(user.withdrawalAmt) + f" per year. Considering your expected average annual return on investment of {user.annualROR}%, ", end = " ")
-    if (user.yearsToDeplete < 0):
-        print(f"these funds will hopefully outlast you, and even grow over time.")
+    print(f"\nYour annual savings rate (of after tax income) is {user.savingsRate}%. Starting with your current savings of " + pC(user.currentPortfolioBal) + " plus saving an additional " + pC(user.annualSavings) + " per year, you will accumulate " + pC(user.amtNeededToRetire), end=" ")
+    if (user.yearsToRetire < 0 or user.yearsToRetire == float("inf")):
+        print("never... If you don't currently have enough money saved for retirement, then your first priority needs to be either (better yet, both) increasing your income or (and) decreasing your expeses.", end=" ")
     else:
-        print(f"These funds should last you {user.yearsToDeplete} years, or until you are {user.age + user.yearsToDeplete}.")
+        print(f" in {user.yearsToRetire} years. You will be {user.age + user.yearsToRetire}.", end=" ")
+        print(f"At that point you can begin withdrawing no more than {user.withdrawalRate}% which is " + pC(user.withdrawalAmt) + f" per year. Considering your expected average annual return on investment of {user.annualROR}%, ", end = " ")
+        if (user.yearsToDeplete < 0):
+            print(f"these funds will hopefully outlast you, and even grow over time.")
+        else:
+            print(f"These funds should last you {user.yearsToDeplete} years, or until you are {user.age + user.yearsToDeplete}.")
 
 def pC(n):
     """format string that takes a number and formats it for currency"""
@@ -123,7 +133,7 @@ def pC(n):
 if __name__ == "__main__":
     startTime = time.time()
     
-    v = 0
+    v = 1
 
     user = getUserInput()
     retireCalcs(user)
