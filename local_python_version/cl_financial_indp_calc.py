@@ -133,7 +133,7 @@ def pC(n):
 if __name__ == "__main__":
     startTime = time.time()
     
-    v = 1
+    v = 0
 
     user = getUserInput()
     retireCalcs(user)
