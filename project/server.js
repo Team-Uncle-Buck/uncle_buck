@@ -1,21 +1,29 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-const port = process.env.PORT || 5000;
 const axios = require('axios');
 const fetch = require('node-fetch');
+const path = require("path");
 
 require('dotenv').config();
-
+const port = process.env.PORT || 5000;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || "AIzaSyAvEi54OTuwv5lFJ-ac4R61LJ60G1O9qs0";
+
 const app = express();
 
 app.use(morgan('tiny'));
 app.use(cors());
+app.use(bodyParser.urlencoded({extended: false }));
+app.use(bodyParser.json());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static( 'client/build' ));
+}
+
 
 
 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=FinanceIndependence&type=video&key=${GOOGLE_API_KEY}`;
-
 
 app.get('/', (req, res) => {
   res.send("hello");
@@ -43,6 +51,9 @@ app.get('/test', (req, res) => {
     .catch(err => console.log(err));
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+});
 
 app.listen(port, () => console.log('Listening on port', port));
 
