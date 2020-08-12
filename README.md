@@ -6,7 +6,7 @@ This is a Financial Independence Calculator Full-Stack Web App created for the P
 *Financial Independence* is the status of having enough income (from investments, passive businesses, real estate, etc.) to pay for one's reasonable living expenses for the rest of one's life without having to rely on formal employment. The core path to achieve financial independence focuses on maximizing one's savings rate through lower spending and/or higher income. Checkout some of the resources listed [here](Resources.md) for a lot information about the theory and some ideas on how to achieve financial independence.
 
 ## **!!!  Disclaimer  !!!**
-This tool is meant for entertainment purposes only. We are not financial professionals. We assume no risk or responsibility for your financial affairs, well being, nor do we assume any liability for your decisions. Everybody's financial situation is different, you cannot rely on a single tool for guidance. For real advice on personal finance, find a trusted certified public accountant (CPA) or certified financial planner (CFP).
+This tool is meant for entertainment purposes only. We are not financial professionals. We assume no risk or responsibility for your financial affairs, well being, nor do we assume any liability for your decisions. Everybody's financial situation is different, you cannot rely on a single tool for guidance. For real advice on personal finance, find a trusted certified public accountant [CPA](https://account.aicpa.org/eWeb/dynamicpage.aspx?webcode=referralwebsearch) or certified financial planner [CFP](https://www.letsmakeaplan.org/).
 
 ## Instructions for Use
 There are two methods to accessing this toy tool.
@@ -24,6 +24,7 @@ We benefited from the tools, libraries, and tips from many different sources. [H
 - [Tom More "$ Less Problems" Lancaster](https://github.com/tlan2)
 - [Pat Radamacher](https://github.com/PatRademacher)
 - [Chad Tolleson](https://github.com/tollesonpdx)
+- [Uncle Buck](https://github.com/Team-Uncle-Buck)
 
 ## License
 This work is released under the "GNU General Public License". Please see the file [LICENSE](LICENSE) in this distribution for license terms.
