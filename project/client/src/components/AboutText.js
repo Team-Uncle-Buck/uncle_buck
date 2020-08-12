@@ -32,8 +32,10 @@ function AboutText() {
         financial affairs, well being, nor do we assume any liability for your
         decisions. Everybody's financial situation is different, you cannot 
         rely on a single tool for guidance. For real advice on personal 
-        finance, find a trusted certified public accountant (CPA) or certified
-        financial planner (CFP).
+        finance, find a trusted certified public accountant
+        <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html"> (CPA) </a> 
+        or certified financial planner 
+        <a target="_blank" href="https://www.letsmakeaplan.org/"> (CFP)</a>.
         </p>
       </section>
       <section>
@@ -51,23 +53,23 @@ function AboutText() {
       <section>
         <h4>Team Uncle Buck</h4>
         <p>
-        - [Mi Yon Kim](https://github.com/youn0125)
-        - [Tom More "$ Less Problems" Lancaster](https://github.com/tlan2)
-        - [Pat Radamacher](https://github.com/PatRademacher)
-        - [Chad Tolleson](https://github.com/tollesonpdx)
-        - [Uncle Buck](https://github.com/Team-Uncle-Buck)
+        <a target="_blank" href="https://github.com/youn0125">Mi Yon Kim</a><br></br>
+        <a target="_blank" href="https://github.com/tlan2">Tom More "$ Less Problems" Lancaster</a><br></br>
+        <a target="_blank" href="https://github.com/PatRademacher">Pat Rademacher</a><br></br>
+        <a target="_blank" href="https://github.com/tollesonpdx">Chad Tolleson</a><br></br>
+        <a target="_blank" href="https://github.com/Team-Uncle-Buck">Team Uncle Buck</a>
         </p>
       </section>
       <section>
-        <h4>What is Lorem Ipsum?</h4>
+        <h4>Additional Resources</h4>
         <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-        took a galley of type and scrambled it to make a type specimen book. It has survived not 
-        only five centuries, but also the leap into electronic typesetting, remaining essentially 
-        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
-        including versions of Lorem Ipsum.
+        <a target="_blank" href="https://smartasset.com/taxes/paycheck-calculator">Federal Paycheck Calculator</a><br></br>
+        <a target="_blank" href="https://www.mrmoneymustache.com/">MMM Blog</a><br></br>
+        <a target="_blank" href="https://www.madfientist.com/about/">Mad Fientist</a><br></br>
+        <a target="_blank" href="https://en.wikipedia.org/wiki/Financial_independence">Financial Independence on Wikipedia</a><br></br>
+        <a target="_blank" href="https://www.reddit.com/r/financialindependence/wiki/faq">Online Community About Financial Independence</a><br></br>
+        <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html">Find a CPA</a><br></br>
+        <a target="_blank" href="https://www.letsmakeaplan.org/">Find a CFP</a><br></br>
         </p>
       </section>
       <section>
