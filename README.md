@@ -4,7 +4,7 @@
 Financial Independence Calculator Full-Stack Web App created for PSU Open Source class in Summer 2020.
 
 ## **Disclaimer!**
-This tool is meant for entertainment purposes only. We are not financial professionals. We assume no risk or responsibility for your financial affairs, well being, nor do we assume any liability for your decisions. Everybody's financial situation is different; for real advice on personal finance, find a trusted certified public accountant (CPA) or certified financial planner (CFP).
+This tool is meant for entertainment purposes only. We are not financial professionals. We assume no risk or responsibility for your financial affairs, well being, nor do we assume any liability for your decisions. Everybody's financial situation is different, you cannot rely on a single tool for guidance. For real advice on personal finance, find a trusted certified public accountant (CPA) or certified financial planner (CFP).
 
 ## Instructions for Use
 There are two methods to accessing this toy tool.
