@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Jumbotron as Jumbo } from 'react-bootstrap';
+import './Jumbotron.css';
 
 //Class for the top Jumbotron
 class Jumbotron extends Component {
 
   render() {
     return (
-      <Jumbo>
+      <Jumbo className="jumbo__text">
         <h1>Tia: "What is financial independence?"</h1>
         <p>Uncle Buck: "Basically it means you can live your life without 
         having to worry about steady employment to cover your expenses. 

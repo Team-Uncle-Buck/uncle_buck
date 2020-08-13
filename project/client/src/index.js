@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './fonts/cormorant/Cormorant-Regular.ttf';
+import './fonts/cormorant/Cormorant-Medium.ttf';
+import './fonts/cormorant/Cormorant-Bold.ttf';
+import './fonts/cormorant/Cormorant-SemiBold.ttf';
+
 
 ReactDOM.render(
   <React.StrictMode>

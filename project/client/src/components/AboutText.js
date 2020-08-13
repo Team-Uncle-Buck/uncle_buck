@@ -1,10 +1,11 @@
 import React from "react";
+import "./AboutText.css";
 
 function AboutText() {
   return (
     <div className="about__text">
       <section>
-        <h4>About</h4>
+        <h4 className="about__title">About</h4>
         <p>
         This is a Financial Independence Calculator Full-Stack Web App created
         for the PSU Open Source class in the Summer 2020 by team "Uncle Buck".
@@ -14,7 +15,7 @@ function AboutText() {
         </p>
       </section>
       <section>
-        <h4>Financial Independence</h4>
+        <h4 className="about__title">Financial Independence</h4>
         <p>
         Financial Independence is the status of having enough income (from 
         investments, passive businesses, real estate, etc.) to pay for one's
@@ -25,7 +26,7 @@ function AboutText() {
         </p>
       </section>
       <section>
-        <h4>!!!  Disclaimer  !!!</h4>
+        <h4 className="about__title">!!!  Disclaimer  !!!</h4>
         <p>
         This tool is meant for entertainment purposes only. We are not 
         financial professionals. We assume no risk or responsibility for your 
