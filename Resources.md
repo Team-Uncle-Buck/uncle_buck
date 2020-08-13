@@ -1,6 +1,6 @@
 # Resources Referenced for this Project
 
-## Inspirations
+## Project Inspirations
 - https://www.firecalc.com
 - https://www.cfiresim.com
 - http://networthify.com/calculator/earlyretirement
@@ -11,6 +11,13 @@
 - https://www.mrmoneymustache.com/
 - https://www.reddit.com/r/financialindependence/wiki/faq
 - https://www.madfientist.com/about/
+- https://en.wikipedia.org/wiki/Financial_independence
+
+
+## Actual Personal Finance Professionals
+- Find a Certified Public Accountant (CPA):  https://www.aicpa.org/forthepublic/findacpa.html
+- Find a Certified Financial Planner (CFP):  https://www.letsmakeaplan.org/
+
 
 ## Code References
 - Thanks to "ElPastor" for the tip on formatting numbers as currency in Python:
