@@ -4,7 +4,6 @@
 - https://www.firecalc.com
 - https://www.cfiresim.com
 - http://networthify.com/calculator/earlyretirement
-- 
 
 ## Domain Level Knowledge Resources
 - https://smartasset.com/taxes/paycheck-calculator
