@@ -68,8 +68,11 @@ function AboutText() {
         <a target="_blank" href="https://www.madfientist.com/about/">Mad Fientist</a><br></br>
         <a target="_blank" href="https://en.wikipedia.org/wiki/Financial_independence">Financial Independence on Wikipedia</a><br></br>
         <a target="_blank" href="https://www.reddit.com/r/financialindependence/wiki/faq">Online Community About Financial Independence</a><br></br>
+        <a target="_blank" href="http://networthify.com/calculator/earlyretirement">Another, maybe better calculator</a><br></br>
+        <a target="_blank" href="http://networthify.com/calculator/earlyretirement">Another, maybe better calculator</a><br></br>
         <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html">Find a CPA</a><br></br>
         <a target="_blank" href="https://www.letsmakeaplan.org/">Find a CFP</a><br></br>
+
         </p>
       </section>
       <section>
