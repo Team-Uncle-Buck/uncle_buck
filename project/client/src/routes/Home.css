@@ -3,3 +3,11 @@
   display: flex;
   justify-content: center;
 }
+
+.jumbo {
+  padding: 0px;
+}
+
+#jumboTitle {
+  font-style: italic;
+}

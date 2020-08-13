@@ -1,5 +1,10 @@
 import React from "react";
 import "./Home.css";
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+} from 'reactstrap';
 
 class Home extends React.Component {
   constructor() {
@@ -7,62 +12,41 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h2>Home</h2>
-      </div>
-    );
+      // <div>
+      //   <h2>Calculate Your FI Date:</h2>
+      // </div>
+        <Container className="App">
+        <h2>Sign In</h2>
+        <Form className="form">
+          <Col>
+            <FormGroup>
+              <Label>Email</Label>
+              <Input
+                type="email"
+                name="email"
+                id="exampleEmail"
+                placeholder="myemail@email.com"
+              />
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="********"
+              />
+            </FormGroup>
+          </Col>
+          <Button>Submit</Button>
+        </Form>
+      </Container>
+    );  
   }
 }
 
-// class CalculateDate extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       isGoing: true,
-//       numberOfGuests: 2
-//     };
 
-//     this.handleInputChange = this.handleInputChange.bind(this);
-//   }
-
-//   handleInputChange(event) {
-//     const target = event.target;
-//     const value = target.type === 'checkbox' ? target.checked : target.value;
-//     const name = target.name;
-
-//     this.setState({
-//       [name]: value
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <form>
-//         <label>
-//           Is going:
-//           <input
-//             name="isGoing"
-//             type="checkbox"
-//             checked={this.state.isGoing}
-//             onChange={this.handleInputChange} />
-//         </label>
-//         <br />
-//         <label>
-//           Number of guests:
-//           <input
-//             name="numberOfGuests"
-//             type="number"
-//             value={this.state.numberOfGuests}
-//             onChange={this.handleInputChange} />
-//         </label>
-//       </form>
-//     );
-//   }
-// }
-
-// ReactDOM.render(
-//   <Reservation />,
-//   document.getElementById('root')
-// );
 
 export default Home;
