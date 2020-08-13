@@ -18,59 +18,83 @@ class Home extends React.Component {
   render() {
     return (
           <Form>
+            <h2>Calculate Your FI Date:</h2>
           <FormGroup as={Row} controlId="formHorizontalEmail">
             <Label column sm={2}>
-              Email
+            <a href="https://www.youtube.com/watch?v=K7l5ZeVVoCA"> What's My Age Again? </a>
             </Label>
             <Col sm={10}>
-              <Form.Control type="email" placeholder="Email" />
+              <Form.Control type="age" placeholder="Age" />
             </Col>
           </FormGroup>
 
           <FormGroup as={Row} controlId="formHorizontalPassword">
             <Label column sm={2}>
-              Password
+              How Much Money Do You Make After Taxes? <a href="https://smartasset.com/taxes/paycheck-calculator">Need Help?</a>
             </Label>
             <Col sm={10}>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control placeholder="50,000" />
             </Col>
           </FormGroup>
-          <fieldset>
-            <FormGroup as={Row}>
-              <Label as="legend" column sm={2}>
-                Radios
-              </Label>
-              <Col sm={10}>
-                <Form.Check
-                  type="radio"
-                  label="first radio"
-                  name="formHorizontalRadios"
-                  id="formHorizontalRadios1"
-                />
-                <Form.Check
-                  type="radio"
-                  label="second radio"
-                  name="formHorizontalRadios"
-                  id="formHorizontalRadios2"
-                />
-                <Form.Check
-                  type="radio"
-                  label="third radio"
-                  name="formHorizontalRadios"
-                  id="formHorizontalRadios3"
-                />
-              </Col>
-            </FormGroup>
-          </fieldset>
-          <FormGroup as={Row} controlId="formHorizontalCheck">
-            <Col sm={{ span: 10, offset: 2 }}>
-              <Form.Check label="Remember me" />
+
+          <FormGroup as={Row} controlId="formHorizontalPassword">
+            <Label column sm={2}>
+              How Much Money Do You Spend Each Month? <a href="quicken.com/budget-calculator">Need Help?</a>
+            </Label>
+            <Col sm={10}>
+              <Form.Control placeholder="2,000" />
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="formHorizontalPassword">
+            <Label column sm={2}>
+              Yearly Expenses:
+            </Label>
+            <Col sm={10}>
+              <Form.Control placeholder="24,000"/>
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="formHorizontalPassword">
+            <Label column sm={2}>
+              Yearly Savings:
+            </Label>
+            <Col sm={10}>
+              <Form.Control placeholder="26,000"/>
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="formHorizontalPassword">
+            <Label column sm={2}>
+              Yearly Savings:
+            </Label>
+            <Col sm={10}>
+              <Form.Control placeholder="52%"/>
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="formHorizontalPassword">
+            <Label column sm={2}>
+              How Much Money Do You Have Saved in Bank Accounts?
+            </Label>
+            <Col sm={10}>
+              <Form.Control placeholder="20,000" />
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="formHorizontalPassword">
+            <Label column sm={2}>
+              How Much Money Do You Have Saved in Retirement Vehicles?
+              (401K, IRA, IndexFunds, etc....)
+            </Label>
+            <Col sm={10}>
+              <Form.Control placeholder="30,000" />
             </Col>
           </FormGroup>
 
           <FormGroup as={Row}>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit">Sign in</Button>
+              <Button type="submit">Calculate FI Date!</Button>
             </Col>
           </FormGroup>
         </Form>
