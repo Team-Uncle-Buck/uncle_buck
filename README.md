@@ -15,15 +15,14 @@ There are a few twists in our calculator, for example:
 
 Our calculator takes all these numbers into consideration and then predicts (again, assuming no unforseen outstanding circumstances) how long it will take you to accumulate enough funds to become financially independent, and then how long those funds should last you after you start taking withdrawals. There are a few scenarios we don't yet take into account. Most notably, what happens if you reach your financial independence mark but keep working afterwards? Well, in short your savings just grow even moreso than they already would. Maybe in version 2.0 we'll expand the calculator reflect such a scenario.
 
-![](demo_files/cli_demo_img.png)
-
 
 ## **!!!  Disclaimer  !!!**
 This tool is meant for entertainment purposes only. We are not financial professionals. We assume no risk or responsibility for your financial affairs, well being, nor do we assume any liability for your decisions. Everybody's financial situation is different, you cannot rely on a single tool for guidance. For real advice on personal finance, find a trusted certified public accountant [CPA](https://account.aicpa.org/eWeb/dynamicpage.aspx?webcode=referralwebsearch) or certified financial planner [CFP](https://www.letsmakeaplan.org/).
 
 ## Instructions for Use
 There are two methods to accessing this toy tool.
-1) Read the supporting documentation linked from this README, and execute the code locally on your machine. You will need at least [Python3](https://www.python.org/downloads/) installed on your machine. Then proceed to the subfolder titled "local_python_version" and run the program with this command: "python3 cl_financial_indp_calc.py"
+1) Read the supporting documentation linked from this README, and execute the code locally on your machine. You will need at least [Python3](https://www.python.org/downloads/) installed on your machine. Then proceed to the subfolder titled "local_python_version" and run the program with this command: "python3 cl_financial_indp_calc.py" ![](demo_files/cli_demo_img.png)
+
 2) Visit our website deployed on Heroku: https://uncle-buck.herokuapp.com/
 
 ## Resources
