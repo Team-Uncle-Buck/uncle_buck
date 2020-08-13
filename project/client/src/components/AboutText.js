@@ -68,8 +68,12 @@ function AboutText() {
         <a target="_blank" href="https://www.madfientist.com/about/">Mad Fientist</a><br></br>
         <a target="_blank" href="https://en.wikipedia.org/wiki/Financial_independence">Financial Independence on Wikipedia</a><br></br>
         <a target="_blank" href="https://www.reddit.com/r/financialindependence/wiki/faq">Online Community About Financial Independence</a><br></br>
-        <a target="_blank" href="http://networthify.com/calculator/earlyretirement">Another, maybe better calculator</a><br></br>
-        <a target="_blank" href="http://networthify.com/calculator/earlyretirement">Another, maybe better calculator</a><br></br>
+        <a target="_blank" href="https://www.daveramsey.com/dave-ramsey-7-baby-steps">Dave Ramsey's 7 Baby Steps</a><br></br>
+        <a target="_blank" href="http://networthify.com/calculator/earlyretirement">Another, maybe better calculator: Networthify Retirement Calculator</a><br></br>
+        <a target="_blank" href="https://www.firecalc.com/">Yet another, maybe better calculator. FIRECalc - A different kind of retirement calculator</a><br></br>
+        <a target="_blank" href="https://www.firecalc.com/">Yet another, maybe better calculator. FIRECalc - A different kind of retirement calculator</a><br></br>
+        
+
         <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html">Find a CPA</a><br></br>
         <a target="_blank" href="https://www.letsmakeaplan.org/">Find a CFP</a><br></br>
 
