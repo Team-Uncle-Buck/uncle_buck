@@ -4,25 +4,39 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import FormGroup from 'react-bootstrap/FormGroup'
 import Label from 'react-bootstrap/FormLabel'
-import InputGroup from 'react-bootstrap/InputGroup'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import FormCheck from 'react-bootstrap/FormCheck'
+import {Input} from 'reactstrap';
+// import { Container, Col, FormGroup, 
+//         Label, Input, Form, Button, 
+//         Row, FormCheck } from 'reactstrap';
 
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {isToggleOn: true}
+    this.state = {
+      age: '',
+      annualIncomeAfterTaxes: '',
+      yearlyExpenses: '',
+      yearlySavings: '',
+      portfolioBalance: '',
+      rateOfReturn: '',
+      riskTolerance: '',
+    }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.calculate = this.calculate.bind(this);
   }
 
-  handleClick(e) {
+  calculate(e) {
     e.preventDefault();
     console.log('The link was clicked.');
   }
+
+
+
 
 
   render() {
@@ -49,75 +63,72 @@ class Home extends React.Component {
 
           <FormGroup as={Row} controlId="3">
             <Label column sm={2}>
-              How Much Money Do You Spend Each Month? <a href="quicken.com/budget-calculator" target="_blank">Need Help?</a>
+              How Much Money Do You Spend Each Year? <a href="quicken.com/budget-calculator" target="_blank">Need Help?</a>
             </Label>
             <Col sm={10}>
-              <Form.Control placeholder="2,000" />
-            </Col>
-          </FormGroup>
-
-          <FormGroup as={Row} controlId="4">
-            <Label column sm={2}>
-              Yearly Expenses:
-            </Label>
-            <Col sm={10}>
-              <Form.Control placeholder="24,000"/>
+              <Form.Control placeholder="24,000" aria-describedby="savingsHelpBlock"/>
+              <Form.Text id="savingsHelpBlock" muted>
+              Take your monthly budget and multiply by 12.
+              </Form.Text>
             </Col>
           </FormGroup>
 
           <FormGroup as={Row} controlId="5">
             <Label column sm={2}>
-              Yearly Savings:
+              How Much Money Do You Save Each Year?
             </Label>
             <Col sm={10}>
               <Form.Control placeholder="26,000"/>
-            </Col>
-          </FormGroup>
-
-          <FormGroup as={Row} controlId="6">
-            <Label column sm={2}>
-              Yearly Savings:
-            </Label>
-            <Col sm={10}>
-              <Form.Control placeholder="52%"/>
+              <Form.Text id="savingsHelpBlock" muted>
+                Subtract two numbers above.
+              </Form.Text>
             </Col>
           </FormGroup>
 
           <FormGroup as={Row} controlId="7">
             <Label column sm={2}>
-              How Much Money Do You Have Saved in Bank Accounts?
+              How much do you have in savings (savings account, 401k, IRA, brokerage account, etc)? 
             </Label>
             <Col sm={10}>
-              <Form.Control placeholder="20,000" />
+              <Form.Control placeholder="20,000" aria-describedby="savingsHelpBlock"/>
+              <Form.Text id="savingsHelpBlock" muted>
+              If you have more debt than savings, then subtract your total savings from 
+              your total debt and enter a negative number here. For example you might have 
+              $5,000 in savings account and $6,000 credit card balance. In that case, enter -1000 
+              here... and pay off that credit card as quickly as possible!
+              </Form.Text>
             </Col>
           </FormGroup>
 
           <FormGroup as={Row} controlId="8">
             <Label column sm={2}>
-              How Much Money Do You Have Saved in Retirement Vehicles?
-              (401K, IRA, IndexFunds, etc....)
+             What Is Your Expected Annual Rate Of Return On Investments After Inflation?
             </Label>
             <Col sm={10}>
-              <Form.Control placeholder="30,000" />
+              <Form.Control placeholder="5.0" />
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="9">
+            <Label column sm={2}>What Is Your Risk Tolerance?</Label>
+            <Col sm={10}> 
+                <Input type="select" name="select" id="exampleSelect">
+                  <option>Low - Save More than Needed</option>
+                  <option>Medium - Save Recommended Amount</option>
+                  <option>High - Save Absolute Minimum Needed</option>
+                </Input>
             </Col>
           </FormGroup>
 
           <FormGroup as={Row}>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit" onClick={this.handleClick}>Calculate FI Date!</Button>
+              <Button type="submit" onClick={this.calculate}>Calculate FI Date!</Button>
             </Col>
           </FormGroup>
         </Form>
     );  
   }
 }
-
-
-
-// submitForm(e) {
-//   e.preventDefault();
-//   console.log(`Email: ${ this.state.email }`)
-// }
 
 // function calcSavingsRate(annualSavings, annualIncomeAfterTaxes):
 //   var sr = round(annualSavings/annualIncomeAfterTaxes * 100, 0);

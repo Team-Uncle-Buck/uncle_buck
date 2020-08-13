@@ -33,7 +33,7 @@ def getUserInput():
         print("\nFor the following amounts, please round to the nearest thousand. Enter amounts in this format 15000 with no commas or currency symbols.")
         annualIncomeAfterTaxes, annualExpenses, annualSavings, riskTolerance = 1,1,1,0
         while (annualIncomeAfterTaxes - annualExpenses - annualSavings != 0):
-            annualIncomeAfterTaxes = int(input("\nWhat is your annual income after taxes?\n"))
+            annualIncomeAfterTaxes = int(input("\nWhat is your annual W after taxes?\n"))
             annualExpenses = int(input("\nWhat is the total amount of your annual expenses?\n"))
             if annualExpenses <= 0:
                 print("No expenses?!? You're already ready to retire!")
