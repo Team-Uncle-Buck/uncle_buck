@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 
-const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q=FinanceIndependence&type=video&key=${GOOGLE_API_KEY}`;
+const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=FinanceIndependence&type=video&key=${GOOGLE_API_KEY}`;
 
 app.get('/', (req, res) => {
   res.send("hello");
