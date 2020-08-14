@@ -115,7 +115,7 @@ function AboutText() {
       <section>
         <h4>Code of Conduct</h4>
         <p>LINK TO CODE OF CONDUCT DOCUMENT HERE</p>
-        <Nav.Link href="/code_of_conduct">Code of Conduct</Nav.Link>
+        {/* <Nav.Link href="/code_of_conduct">Code of Conduct</Nav.Link> */}
         {/* <CodeOfConduct/> */}
       </section>
       <section>
