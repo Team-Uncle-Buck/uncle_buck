@@ -3,6 +3,9 @@ import React from "react";
 import "./AboutText.css";
 
 import CodeOfConduct from "./CodeOfConduct";
+import { Route } from "react-router-dom";
+import CodePage from "../routes/CodePage";
+import LicensePage from "../routes/LicensePage";
 
 
 function AboutText() {
@@ -32,9 +35,6 @@ function AboutText() {
         <br />
       </section>
       <section>
-
-        <h4 className="about__title">!!!  Disclaimer  !!!</h4>
-
         <h4>Education ~ How Our Calculator Works</h4>
         <p>
         <b>Here is how our calculator works.</b><br></br>As mentioned above, 
@@ -109,7 +109,6 @@ function AboutText() {
       </section>
       <section>
         <h4>!!!  Disclaimer  !!!</h4>
-
         <p>
         This tool is meant for entertainment purposes only. We are not 
         financial professionals. We assume no risk or responsibility for your 
@@ -124,23 +123,15 @@ function AboutText() {
         <br />
       </section>
       <section>
-        <h4>Code of Conduct</h4>
-
-        <p>
-        LINK TO CODE OF CONDUCT DOCUMENT HERE
-        </p>
+        <h4>
+        <a href="/CodePage">Code of Conduct</a>
+        </h4>
         <br />
-
-        <p>LINK TO CODE OF CONDUCT DOCUMENT HERE</p>
-        {/* <Nav.Link href="/code_of_conduct">Code of Conduct</Nav.Link> */}
-        {/* <CodeOfConduct/> */}
-
       </section>
       <section>
-        <h4>License</h4>
-        <p>
-        LINK TO LICENSE HERE
-        </p>
+        <h4>
+        <a href="/LicensePage">License</a>
+        </h4>
         <br />
       </section>
       <section>
