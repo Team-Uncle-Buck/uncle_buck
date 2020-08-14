@@ -11,7 +11,7 @@ class Navigation extends Component {
 
       <Navbar bg="light" expand="lg" variant="light">
         <Navbar bg="light" variant="light">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               alt=""
               src="/logo.png"
@@ -31,6 +31,7 @@ class Navigation extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+  
     );
   }
 }
