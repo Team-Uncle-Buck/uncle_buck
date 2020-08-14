@@ -7,7 +7,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <Navbar className="body" bg="light" expand="lg">
+      <Navbar className="title" bg="light" expand="lg">
         <Navbar.Brand href="/">Uncle Buck</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

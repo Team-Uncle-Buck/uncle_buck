@@ -13,6 +13,7 @@ function AboutText() {
         the user play around with some number to see if and when they can reach
         financial independence.
         </p>
+        <br />
       </section>
       <section>
         <h4 className="about__title">Financial Independence</h4>
@@ -24,6 +25,7 @@ function AboutText() {
         independence focuses on maximizing one's savings rate through lower 
         spending and/or higher income.
         </p>
+        <br />
       </section>
       <section>
         <h4 className="about__title">!!!  Disclaimer  !!!</h4>
@@ -38,18 +40,21 @@ function AboutText() {
         or certified financial planner 
         <a target="_blank" href="https://www.letsmakeaplan.org/"> (CFP)</a>.
         </p>
+        <br />
       </section>
       <section>
         <h4>Code of Conduct</h4>
         <p>
         LINK TO CODE OF CONDUCT DOCUMENT HERE
         </p>
+        <br />
       </section>
       <section>
         <h4>License</h4>
         <p>
         LINK TO LICENSE HERE
         </p>
+        <br />
       </section>
       <section>
         <h4>Team Uncle Buck</h4>
@@ -60,6 +65,7 @@ function AboutText() {
         <a target="_blank" href="https://github.com/tollesonpdx">Chad Tolleson</a><br></br>
         <a target="_blank" href="https://github.com/Team-Uncle-Buck">Team Uncle Buck</a>
         </p>
+        <br />
       </section>
       <section>
         <h4>Additional Resources</h4>
@@ -72,6 +78,7 @@ function AboutText() {
         <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html">Find a CPA</a><br></br>
         <a target="_blank" href="https://www.letsmakeaplan.org/">Find a CFP</a><br></br>
         </p>
+        <br />
       </section>
       <section>
         <h4>What is Lorem Ipsum?</h4>
@@ -84,6 +91,7 @@ function AboutText() {
         Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
         including versions of Lorem Ipsum.
         </p>
+        <br />
       </section>
     </div>
   );

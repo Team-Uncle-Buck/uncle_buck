@@ -1,7 +1,9 @@
 .about__text {
-  font-family: Cormorant SemiBold
+  font-family: Roboto Slab Light;
+  font-size: 0.9em;
 }
 
 .about__title {
-  font-family: Cormorant Bold
+  font-family: Barlow Medium;
+  font-weight: 500;
 }

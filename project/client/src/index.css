@@ -1,11 +1,37 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, linotype-sabon,'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-weight: 400;
 }
+
+.serif_bold {
+  font-family: "Times New Roman", Times, serif;
+  font-style: bold;
+}
+
+.serif {
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+.sans_serif {
+  font-family:  Helvetica, Arial, sans-serif;
+}
+
+.sans_serif_bold {
+  font-family: Helvetica, Arial,sans-serif;
+  font-style: bold;
+}
+
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
+}
+
 
 @font-face {
   font-family: 'Cormorant Regular';
@@ -23,8 +49,30 @@ body {
   font-family: 'Cormorant SemiBold';
   src: local('Cormorant SemiBold'), url(./fonts/cormorant/Cormorant-SemiBold.ttf) format('truetype');
 }
-
-
+@font-face {
+  font-family: 'Sabon Bold';
+  src: local('Sabon Bold'), url(./fonts/sabon/sabon_bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato Bold';
+  src: local('Lato Bold'), url(./fonts/lato/Lato-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url(./fonts/lato/Lato-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab Light';
+  src: local('Roboto Slab'), url(./fonts/roboto_slab/RobotoSlab-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab Medium';
+  src: local('Roboto Slab'), url(./fonts/roboto_slab/RobotoSlab-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Medium';
+  src: local('Barlow Medium'), url(./fonts/barlow/Barlow-Medium.ttf) format('truetype');
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
