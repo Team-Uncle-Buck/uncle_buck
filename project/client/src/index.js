@@ -3,14 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import './fonts/cormorant/Cormorant-Regular.ttf';
-import './fonts/cormorant/Cormorant-Medium.ttf';
-import './fonts/cormorant/Cormorant-Bold.ttf';
-import './fonts/cormorant/Cormorant-SemiBold.ttf';
-import './fonts/sabon/sabon_bold.ttf';
 import './fonts/lato/Lato-Bold.ttf';
-import './fonts/roboto_slab/RobotoSlab-Light.ttf';
 import './fonts/lato/Lato-Regular.ttf';
+import './fonts/roboto_slab/RobotoSlab-Light.ttf';
 import './fonts/roboto_slab/RobotoSlab-Medium.ttf';
 import './fonts/barlow/Barlow-Medium.ttf';
 
