@@ -24,6 +24,16 @@ There are two methods to accessing this toy tool.
 1) Read the supporting documentation linked from this README, and execute the code locally on your machine. You will need at least [Python3](https://www.python.org/downloads/) installed on your machine. Then proceed to the subfolder titled "local_python_version" and run the program with this command: "python3 cl_financial_indp_calc.py" ![](demo_files/cli_demo_img.png)
 
 2) Visit our website deployed on Heroku: https://uncle-buck.herokuapp.com/
+3) I guess option three is to download the web app and run it on your local machine:
+   -  first make sure you have [Git](https://git-scm.com/), [ReactJS](https://reactjs.org/), [Node Package Manager](https://www.npmjs.com/) installed on your machine, then execute these commands...
+   -  git clone https://github.com/Team-Uncle-Buck/uncle_buck.git
+   -  cd uncle_buck\project
+   -  npm install
+   -  npm start
+   -  cd client
+   -  npm install
+   -  npm start
+   -  Then navigate to localhost:3000 (or whatever port React assigns) to view the web app locally.
 
 ## Resources
 We benefited from the tools, libraries, and tips from many different sources. [Here](Resources.md) is a detailed list of references both technical and domain related. 
@@ -31,12 +41,13 @@ We benefited from the tools, libraries, and tips from many different sources. [H
 ## Code of Conduct
 [Code of Conduct](CodeOfConduct.md) borrowed from [Contributor Covenant](https://www.contributor-covenant.org/).
 
-## Uncle Buck Team Members
+
+## License
+This work is released under the "GNU General Public License". Please see the file [LICENSE](LICENSE) in this distribution for license terms.
+
+## [**Team Uncle Buck**](https://github.com/Team-Uncle-Buck)
 - [Mi Yon Kim](https://github.com/youn0125)
 - [Tom More "$ Less Problems" Lancaster](https://github.com/tlan2)
 - [Pat Radamacher](https://github.com/PatRademacher)
 - [Chad Tolleson](https://github.com/tollesonpdx)
 - [Uncle Buck](https://github.com/Team-Uncle-Buck)
-
-## License
-This work is released under the "GNU General Public License". Please see the file [LICENSE](LICENSE) in this distribution for license terms.
