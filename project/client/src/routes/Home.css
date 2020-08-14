@@ -11,3 +11,11 @@
 #jumboTitle {
   font-style: italic;
 }
+
+#results {
+  color: darkgreen;
+  font-size: 200%;
+  font-weight: bold;
+  text-align: left;
+  width: 90%;
+}
