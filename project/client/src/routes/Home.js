@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import FormCheck from 'react-bootstrap/FormCheck'
-import {Input} from 'reactstrap';
+import {Input, NavLink} from 'reactstrap';
 // import { Container, Col, FormGroup, 
 //         Label, Input, Form, Button, 
 //         Row, FormCheck } from 'reactstrap';
@@ -31,27 +31,141 @@ class Home extends React.Component {
       rateOfReturn: '',
       riskTolerance: ''
     };
-
-    
   }
 
   myChangeHandler = (event) => {
     let nam = event.target.name; // pulls from "name" attribute in input
     let val = event.target.value; // pulls from "value" attribute in input
+    
+    // if(val.indexOf(',') != -1){
+    //   val = val.replace(',','').trim();
+    // }
     this.setState({[nam]: val});
   }
 
   handleSubmit(e) {
     e.preventDefault();
     console.log('The link was clicked.');
-    console.log(`Age: ${this.state.age}`)
-    console.log(`Annual Income After Taxes: ${this.state.annualIncomeAfterTaxes}`)
-    console.log(`Yearly Expenses: ${this.state.yearlyExpenses}`)
-    console.log(`Yearly Savings: ${this.state.yearlySavings}`)
-    console.log(`Portfolio Balance: ${this.state.portfolioBalance}`)
-    console.log(`Rate of Return: ${this.state.rateOfReturn}`)
-    console.log(`Risk Tolerance: ${this.state.riskTolerance}`)
+    console.log(`Age: ${this.state.age}`);
+    console.log(`Annual Income After Taxes: ${this.state.annualIncomeAfterTaxes}`);
+    console.log(`Yearly Expenses: ${this.state.yearlyExpenses}`);
+    console.log(`Yearly Savings: ${this.state.yearlySavings}`);
+    console.log(`Portfolio Balance: ${this.state.portfolioBalance}`);
+    console.log(`Rate of Return: ${this.state.rateOfReturn}`);
+    console.log(`Risk Tolerance: ${this.state.riskTolerance}`);
+
+    // alert("Savings Rate = " + this.calcSavingsRate());
+    console.log("Savings Rate = " + this.calcSavingsRate());
+    this.retireCalcs();
   }
+
+  retireCalcs(){
+    let multiplier = this.getMultiplier();
+    let savingsRate = this.calcSavingsRate();
+    let amountNeededToRetire = this.getAmountNeededToRetire();
+    let amountNeededToSave = amountNeededToRetire - parseFloat(this.state.portfolioBalance.replace(',',''));;
+    let yearsToRetire = this.calcYearsToRetire();
+    let withdrawalRate = this.getWithdrawalRate();
+    let withdrawalAmount = this.getWithdrawalAmount();
+    let yearsToDeplete = this.calcYearsToDeplete();
+    let results = "";
+
+    console.log("multiplier = " + multiplier);
+    console.log("amountNeededToRetire = " + amountNeededToRetire);
+    console.log("savingsRate = " + savingsRate);
+    // alert("yearsToRetire = " + yearsToRetire);
+    console.log("yearsToRetire = " + yearsToRetire);
+    // alert("withdrawalRate = " + withdrawalRate);
+    console.log("withdrawalRate = " + withdrawalRate);
+    // alert("withdrawalAmount = " + withdrawalAmount);
+    console.log("withdrawalAmount = " + withdrawalAmount);
+    // alert("amountNeededToSave = " + amountNeededToSave);
+    console.log("amountNeededToSave = " + amountNeededToSave);
+    alert("yearsToDeplete = " + yearsToDeplete);
+    console.log("yearsToDeplete = " + yearsToDeplete);  
+    
+  }
+
+  getAmountNeededToRetire(){
+    return parseFloat(this.state.yearlyExpenses.replace(',','')) * this.getMultiplier();
+  }
+
+  getMultiplier() {
+    let multiplier = 0;
+
+    if (this.state.riskTolerance == '3'){
+      multiplier = 20;
+    } else if (this.state.riskTolerance == '2'){
+      multiplier = 25;
+    } else {
+      multiplier = 30;
+    }
+
+    return multiplier;
+  }
+  
+  calcSavingsRate(){
+    // returns the savings rate of the user
+    let yearlySavings = parseFloat(this.state.yearlySavings.replace(',',''));
+    let annualIncomeAfterTaxes = parseFloat(this.state.annualIncomeAfterTaxes.replace(',',''));
+    let savingsRate = Math.round(yearlySavings / annualIncomeAfterTaxes * 100, 0);
+    return savingsRate;
+  }
+
+  calcYearsToRetire(amountNeededToRetire){
+    // calculates the years to retire based on user input
+    return this.tvmPeriods();
+  }
+
+  tvmPeriods(amountNeededToRetire){
+    // this function calculates the number of periods (years) it takes to get from 
+    // the present value (PV) to the future value (FV) given a periodic rate 
+    // (r) and periodic payment (C)
+    let PV = parseFloat(this.state.portfolioBalance.replace(',',''));
+    let C = parseFloat(this.state.yearlySavings.replace(',',''));
+    let r = parseFloat(this.state.rateOfReturn.replace(',',''));
+    let FV = parseFloat(this.state.yearlyExpenses.replace(',','')) * this.getMultiplier();
+
+    // alert("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
+    console.log("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
+    let n = 0;
+
+    r /= 100;
+    n = (FV * r + C);
+    n = n / (PV * r + C);
+    n = Math.log(n);
+    n = n / (Math.log(1 + r));
+    n = Math.ceil(n * 10) / 10;
+
+    return n;
+  }
+
+  getWithdrawalRate(){
+    // returns annual withdrawal rate
+    let withRate = Math.round(parseFloat(this.state.yearlyExpenses.replace(',', '')) / this.getAmountNeededToRetire() * 100, 1);
+    
+    return withRate;
+  }
+
+  getWithdrawalAmount(){
+    // returns the amount you of money you can withdraw each year to stay financially independent
+    return this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire();
+  }
+
+  calcYearsToDeplete(){
+    // calculates the number of years it will take to deplete retirement funds
+    let wa = this.getWithdrawalAmount();
+    let r = parseFloat(this.state.rateOfReturn.replace(',','') / 100);
+    let n = (1 / wa) * r * this.getAmountNeededToRetire();
+    n = 1 - n;
+    n = Math.max( (1 / n), 0.000001 );
+    n = Math.log(n);
+    n = n / ( Math.log(1 + r) );
+    n = Math.ceil(n * 10) / 10;
+    
+    return n;
+  }
+
 
   render() {
     return (
@@ -187,10 +301,5 @@ class Home extends React.Component {
     );  
   }
 }
-
-// function calcSavingsRate(annualSavings, annualIncomeAfterTaxes):
-//   var sr = round(annualSavings/annualIncomeAfterTaxes * 100, 0);
-//   return sr;
-
 
 export default Home;
