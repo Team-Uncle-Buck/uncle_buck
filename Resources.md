@@ -4,7 +4,6 @@
 - https://www.firecalc.com
 - https://www.cfiresim.com
 - http://networthify.com/calculator/earlyretirement
-- 
 
 ## Domain Level Knowledge Resources
 - https://smartasset.com/taxes/paycheck-calculator
@@ -30,6 +29,10 @@
   - https://react-bootstrap.github.io/components/navbar/
 - Jumbotron code referred from:
   - https://react-bootstrap.github.io/components/jumbotron/
+- React Forms referenced:
+  - https://reactjs.org/docs/forms.html
+  - https://www.digitalocean.com/community/tutorials/react-fancy-forms-reactstrap
+  - 
 
 ## Miscellaneous
 - [Code of Conduct](CodeOfConduct.md) - we borrowed the code of conduct template from [Contributor Covenant](https://www.contributor-covenant.org/)
