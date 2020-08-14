@@ -8,6 +8,10 @@ class Navigation extends Component {
 
   render() {
     return (
+
+      <Navbar className="title" bg="light" expand="lg">
+        <Navbar.Brand href="/">Uncle Buck</Navbar.Brand>
+
       <Navbar bg="light" expand="lg" variant="light">
         <Navbar bg="light" variant="light">
           <Navbar.Brand href="#home">
@@ -20,6 +24,7 @@ class Navigation extends Component {
             />
           </Navbar.Brand>
         </Navbar>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">

@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import './fonts/lato/Lato-Bold.ttf';
+import './fonts/lato/Lato-Regular.ttf';
+import './fonts/roboto_slab/RobotoSlab-Light.ttf';
+import './fonts/roboto_slab/RobotoSlab-Medium.ttf';
+import './fonts/barlow/Barlow-Medium.ttf';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 ReactDOM.render(
   <React.StrictMode>

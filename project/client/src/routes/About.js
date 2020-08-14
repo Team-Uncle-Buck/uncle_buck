@@ -53,7 +53,7 @@ class About extends React.Component {
               <Col>
                 <AboutText />
               </Col>
-              <Col xs lg="3">
+              <Col xs sm md lg xl ="3">
                 <Container>
                   <Row>
                     {this.state.videos ? this.state.videos.map(video => (
@@ -69,20 +69,6 @@ class About extends React.Component {
               </Col>
             </Row>
           </Container>
-          //   <div class="col-6">
-          //     <AboutText />
-          //   </div>
-          //   <div className="col-6 videos">
-          //   {this.state.videos.map(video => (
-          //     <Video
-          //       key={video.id.videoId}
-          //       id={video.id.videoId}
-          //       title={video.snippet.title}
-          //       thumbnail={video.snippet.thumbnails.default.url}
-          //     />
-          //   ))}
-          //   </div>
-          // </div>
           
         )}
       </section>

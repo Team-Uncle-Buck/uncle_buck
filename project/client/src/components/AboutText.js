@@ -1,11 +1,15 @@
 import React from "react";
+
+import "./AboutText.css";
+
 import CodeOfConduct from "./CodeOfConduct";
+
 
 function AboutText() {
   return (
     <div className="about__text">
       <section>
-        <h4>About</h4>
+        <h4 className="about__title">About</h4>
         <p>
         This is a Financial Independence Calculator Full-Stack Web App created
         for the PSU Open Source class in the Summer 2020 by team "Uncle Buck".
@@ -13,9 +17,10 @@ function AboutText() {
         the user play around with some number to see if and when they can reach
         financial independence.
         </p>
+        <br />
       </section>
       <section>
-        <h4>Financial Independence</h4>
+        <h4 className="about__title">Financial Independence</h4>
         <p>
         Financial Independence is the status of having enough income (from 
         investments, passive businesses, real estate, etc.) to pay for one's
@@ -24,8 +29,12 @@ function AboutText() {
         independence focuses on maximizing one's savings rate through lower 
         spending and/or higher income.
         </p>
+        <br />
       </section>
       <section>
+
+        <h4 className="about__title">!!!  Disclaimer  !!!</h4>
+
         <h4>Education ~ How Our Calculator Works</h4>
         <p>
         <b>Here is how our calculator works.</b><br></br>As mentioned above, 
@@ -100,6 +109,7 @@ function AboutText() {
       </section>
       <section>
         <h4>!!!  Disclaimer  !!!</h4>
+
         <p>
         This tool is meant for entertainment purposes only. We are not 
         financial professionals. We assume no risk or responsibility for your 
@@ -111,18 +121,27 @@ function AboutText() {
         or certified financial planner 
         <a target="_blank" href="https://www.letsmakeaplan.org/"> (CFP)</a>.
         </p>
+        <br />
       </section>
       <section>
         <h4>Code of Conduct</h4>
+
+        <p>
+        LINK TO CODE OF CONDUCT DOCUMENT HERE
+        </p>
+        <br />
+
         <p>LINK TO CODE OF CONDUCT DOCUMENT HERE</p>
         {/* <Nav.Link href="/code_of_conduct">Code of Conduct</Nav.Link> */}
         {/* <CodeOfConduct/> */}
+
       </section>
       <section>
         <h4>License</h4>
         <p>
         LINK TO LICENSE HERE
         </p>
+        <br />
       </section>
       <section>
         <h4>Team Uncle Buck</h4>
@@ -133,6 +152,7 @@ function AboutText() {
         <a target="_blank" href="https://github.com/tollesonpdx">Chad Tolleson</a><br></br>
         <a target="_blank" href="https://github.com/Team-Uncle-Buck">Team Uncle Buck</a>
         </p>
+        <br />
       </section>
       <section>
         <h4>Additional Resources</h4>
@@ -151,6 +171,21 @@ function AboutText() {
         <a target="_blank" href="https://www.letsmakeaplan.org/">Find a CFP</a><br></br>
 
         </p>
+        <br />
+      </section>
+      <section>
+        <h4>What is Lorem Ipsum?</h4>
+        <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer 
+        took a galley of type and scrambled it to make a type specimen book. It has survived not 
+        only five centuries, but also the leap into electronic typesetting, remaining essentially 
+        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+        including versions of Lorem Ipsum.
+
+        </p>
+        <br />
       </section>
     </div>
   );

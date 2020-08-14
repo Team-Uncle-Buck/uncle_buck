@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron as Jumbo } from 'react-bootstrap';
+import './Jumbotron.css';
 
 //Class for the top Jumbotron
 class Jumbotron extends Component {
@@ -7,8 +8,8 @@ class Jumbotron extends Component {
   render() {
     return (
       <Jumbo>
-        <h1>Tia: "What is financial independence?"</h1>
-        <p>Uncle Buck: "Basically it means you can live your life without 
+        <h1 className="jumbo__title">Tia: "What is financial independence?"</h1>
+        <p className="jumbo__text">Uncle Buck: "Basically it means you can live your life without 
         having to worry about steady employment to cover your expenses. 
         You know, off the rat wheel and onto the cheese wheel. You catch 
         my drift? So you hit the financial independence benchmark and you
