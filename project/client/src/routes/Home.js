@@ -13,11 +13,6 @@ import {Input, NavLink} from 'reactstrap';
 //         Label, Input, Form, Button, 
 //         Row, FormCheck } from 'reactstrap';
 
-
-const initialFormData = Object.freeze({
-  age: ""
-});
-
 class Home extends React.Component {
   constructor() {
     super();
@@ -29,7 +24,9 @@ class Home extends React.Component {
       yearlySavings: '',
       portfolioBalance: '',
       rateOfReturn: '',
-      riskTolerance: ''
+      withdrawalAmount: '',
+      riskTolerance: '',
+      status: 'form'
     };
   }
 
@@ -37,9 +34,6 @@ class Home extends React.Component {
     let nam = event.target.name; // pulls from "name" attribute in input
     let val = event.target.value; // pulls from "value" attribute in input
     
-    // if(val.indexOf(',') != -1){
-    //   val = val.replace(',','').trim();
-    // }
     this.setState({[nam]: val});
   }
 
@@ -52,23 +46,25 @@ class Home extends React.Component {
     console.log(`Yearly Savings: ${this.state.yearlySavings}`);
     console.log(`Portfolio Balance: ${this.state.portfolioBalance}`);
     console.log(`Rate of Return: ${this.state.rateOfReturn}`);
+    console.log(`Withdrawal Amount: ${this.state.withdrawalAmount}`);
     console.log(`Risk Tolerance: ${this.state.riskTolerance}`);
 
     // alert("Savings Rate = " + this.calcSavingsRate());
     console.log("Savings Rate = " + this.calcSavingsRate());
     this.retireCalcs();
+
+    this.setState({ status: "results" });
   }
 
   retireCalcs(){
     let multiplier = this.getMultiplier();
     let savingsRate = this.calcSavingsRate();
     let amountNeededToRetire = this.getAmountNeededToRetire();
-    let amountNeededToSave = amountNeededToRetire - parseFloat(this.state.portfolioBalance.replace(',',''));;
+    let amountNeededToSave = amountNeededToRetire - this.state.portfolioBalance.replace(',','');;
     let yearsToRetire = this.calcYearsToRetire();
     let withdrawalRate = this.getWithdrawalRate();
-    let withdrawalAmount = this.getWithdrawalAmount();
+    let withdrawalAmount = parseFloat(this.state.withdrawalAmount);
     let yearsToDeplete = this.calcYearsToDeplete();
-    let results = "";
 
     console.log("multiplier = " + multiplier);
     console.log("amountNeededToRetire = " + amountNeededToRetire);
@@ -77,17 +73,17 @@ class Home extends React.Component {
     console.log("yearsToRetire = " + yearsToRetire);
     // alert("withdrawalRate = " + withdrawalRate);
     console.log("withdrawalRate = " + withdrawalRate);
-    // alert("withdrawalAmount = " + withdrawalAmount);
-    console.log("withdrawalAmount = " + withdrawalAmount);
+    // alert("withdrawalAmount = " + this.state.withdrawalAmount);
+    console.log("withdrawalAmount = " + this.state.withdrawalAmount);
     // alert("amountNeededToSave = " + amountNeededToSave);
     console.log("amountNeededToSave = " + amountNeededToSave);
-    alert("yearsToDeplete = " + yearsToDeplete);
+    // alert("yearsToDeplete = " + yearsToDeplete);
     console.log("yearsToDeplete = " + yearsToDeplete);  
 
   }
 
   getAmountNeededToRetire(){
-    return parseFloat(this.state.yearlyExpenses.replace(',','')) * this.getMultiplier();
+    return this.state.yearlyExpenses.replace(',','') * this.getMultiplier();
   }
 
   getMultiplier() {
@@ -106,9 +102,12 @@ class Home extends React.Component {
   
   calcSavingsRate(){
     // returns the savings rate of the user
-    let yearlySavings = parseFloat(this.state.yearlySavings.replace(',',''));
-    let annualIncomeAfterTaxes = parseFloat(this.state.annualIncomeAfterTaxes.replace(',',''));
+    let yearlySavings = this.state.yearlySavings.replace(',','');
+    // alert("yearlySavings = " + yearlySavings)
+    let annualIncomeAfterTaxes = this.state.annualIncomeAfterTaxes.replace(',','');
+    // alert("annualIncomeAfterTaxes = " + annualIncomeAfterTaxes)
     let savingsRate = Math.round(yearlySavings / annualIncomeAfterTaxes * 100, 0);
+    // alert("savingsRate = " + savingsRate)
     return savingsRate;
   }
 
@@ -121,10 +120,10 @@ class Home extends React.Component {
     // this function calculates the number of periods (years) it takes to get from 
     // the present value (PV) to the future value (FV) given a periodic rate 
     // (r) and periodic payment (C)
-    let PV = parseFloat(this.state.portfolioBalance.replace(',',''));
-    let C = parseFloat(this.state.yearlySavings.replace(',',''));
-    let r = parseFloat(this.state.rateOfReturn.replace(',',''));
-    let FV = parseFloat(this.state.yearlyExpenses.replace(',','')) * this.getMultiplier();
+    let PV = this.state.portfolioBalance.replace(',','');
+    let C = this.state.yearlySavings.replace(',','');
+    let r = this.state.rateOfReturn.replace(',','');
+    let FV = this.state.yearlyExpenses.replace(',','') * this.getMultiplier();
 
     // alert("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
     console.log("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
@@ -142,20 +141,21 @@ class Home extends React.Component {
 
   getWithdrawalRate(){
     // returns annual withdrawal rate
-    let withRate = Math.round(parseFloat(this.state.yearlyExpenses.replace(',', '')) / this.getAmountNeededToRetire() * 100, 1);
+    let withRate = Math.round(this.state.yearlyExpenses.replace(',', '') / this.getAmountNeededToRetire() * 100, 1);
     
     return withRate;
   }
 
-  getWithdrawalAmount(){
-    // returns the amount you of money you can withdraw each year to stay financially independent
-    return this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire();
-  }
+  // getWithdrawalAmount(){
+  //   // returns the amount you of money you can withdraw each year to stay financially independent
+  //   // return this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire();
+  //   return parseFloat(this.state.withdrawalAmount);
+  // }
 
   calcYearsToDeplete(){
     // calculates the number of years it will take to deplete retirement funds
-    let wa = this.getWithdrawalAmount();
-    let r = parseFloat(this.state.rateOfReturn.replace(',','') / 100);
+    let wa = this.state.withdrawalAmount;
+    let r = this.state.rateOfReturn.replace(',','') / 100;
     let n = (1 / wa) * r * this.getAmountNeededToRetire();
     n = 1 - n;
     n = Math.max( (1 / n), 0.000001 );
@@ -166,19 +166,34 @@ class Home extends React.Component {
     return n;
   }
 
-  // printResults():
-    // prints the results of the years to retire calculator
-    // print(f"\nYour annual savings rate (of after tax income) is {user.savingsRate}%. Starting with your current savings of " + pC(user.currentPortfolioBal) + 
-    // " plus saving and additional " + pC(user.annualSavings) + " per year, you will accumulate " + pC(user.amtNeededToRetire) + 
-    // f" in {user.yearsToRetire} years. You will be {user.age + user.yearsToRetire}. At that point you can begin withdrawing no more than {user.withdrawalRate}% which is " + 
-    // pC(user.withdrawalAmt) + f" per year. Considering your expected average annual return on investment of {user.annualROR}%, ", end = " ")
-    // if (user.yearsToDeplete < 0):
-    //     print(f"these funds will hopefully outlast you, and even grow over time.")
-    // else:
-    //     print(f"These funds should last you {user.yearsToDeplete} years, or until you are {user.age + user.yearsToDeplete}.")
+  printResults(){
+    // Displays the results of the years to retire calculator
+    let results = `Your annual savings rate (of after tax income) is ${this.calcSavingsRate()}%. 
+    Starting with your current savings of ${this.state.portfolioBalance} plus saving and additional 
+    ${this.state.yearlySavings} per year, you will accumulate ${this.getAmountNeededToRetire()} `; 
+    
+    if(this.calcYearsToRetire() < 0 || this.calcYearsToRetire() === Infinity){
+      results += `never... If you don't currently have enough money saved for retirement, 
+                  then your first priority needs to be either (better yet, both) increasing 
+                  your income or (and) decreasing your expenses. `;
+    } else {
+        results += `in ${this.calcYearsToRetire()} years. You will be ${Math.round(parseInt(this.state.age) + parseFloat(this.calcYearsToRetire()))}. 
+                    At that point you can begin withdrawing no more than ${this.getWithdrawalRate()}% which is 
+                    ${this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire()} per year. Considering your expected average annual return on investment 
+                    of ${this.state.rateOfReturn}%, `;
+        if(this.calcYearsToDeplete() < 0){
+              results += "these funds will hopefully outlast you, and even grow over time.";
+              return results;
+      } else {
+            results += `These funds should last you ${this.calcYearsToDeplete()} years, or until you are 
+                        ${this.state.age + this.calcYearsToDeplete()}.`
+            
+            return results;
+      }
+    }
+  }
 
-
-  render() {
+  renderForm() {
     return (
           <Form onSubmit={ this.handleSubmit }>
             <h3>Calculate Your FI Date:</h3>
@@ -280,10 +295,31 @@ class Home extends React.Component {
             <Input 
                 type="text" 
                 name="rateOfReturn"
+                value={this.state.rateOfReturn}
                 placeholder="5.0" 
-                onChange={this.myChangeHandler} 
-                onChange={e => this.setState({ rateOfReturn: e.target.value })}
+                onChange={this.myChangeHandler}
             />
+            </Col>
+          </FormGroup>
+
+          <FormGroup as={Row} controlId="8">
+            <Label column sm={2}>
+             What Percentage Of Your Nest Egg Would You Like To Withdraw?
+            </Label>
+            <Col sm={10}>
+            <Input 
+                type="text" 
+                name="withdrawalAmount"
+                value={this.state.withdrawalAmount}
+                placeholder="4.0" 
+                onChange={this.myChangeHandler} 
+                aria-describedby="withdrawalAmountHelpBlock"
+                />
+                  <Form.Text id="withdrawalAmountHelpBlock" muted>
+                  This is a rule of thumb popularized by the 
+                  <a href="https://en.wikipedia.org/wiki/Trinity_study" target="_blank"> Trinity Study. </a> 
+                  Some financially independent people have pulled more and others less.
+                  </Form.Text>
             </Col>
           </FormGroup>
 
@@ -305,11 +341,23 @@ class Home extends React.Component {
 
           <FormGroup as={Row}>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit" color="success"  onClick={this.handleSubmit}>Calculate FI Date!</Button>
+              <Button type="submit" onClick={this.handleSubmit}>Calculate FI Date!</Button>
             </Col>
           </FormGroup>
         </Form>
     );  
+  }
+
+  render() {
+    const { status } = this.state;
+    const submitted = status === "results";
+    return (
+      <>
+        {!submitted && this.renderForm()}
+        {/* {submitted && <p>Thank you! We will talk to you soon!</p>} */}
+        {submitted && <div id='results'>{this.printResults()}</div>}
+        </>
+    );
   }
 }
 
