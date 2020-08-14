@@ -56,14 +56,14 @@ class About extends React.Component {
               <Col xs lg="3">
                 <Container>
                   <Row>
-                    {this.state.videos.map(video => (
+                    {this.state.videos ? this.state.videos.map(video => (
                       <Video
                         key={video.id.videoId}
                         id={video.id.videoId}
                         title={video.snippet.title}
                         thumbnail={video.snippet.thumbnails.medium.url}
                       />
-                    ))}
+                    )): <h6>No result</h6>}
                   </Row>
                 </Container>   
               </Col>
