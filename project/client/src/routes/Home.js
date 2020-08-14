@@ -83,7 +83,7 @@ class Home extends React.Component {
     console.log("amountNeededToSave = " + amountNeededToSave);
     alert("yearsToDeplete = " + yearsToDeplete);
     console.log("yearsToDeplete = " + yearsToDeplete);  
-    
+
   }
 
   getAmountNeededToRetire(){
@@ -165,6 +165,17 @@ class Home extends React.Component {
     
     return n;
   }
+
+  printResults():
+    // prints the results of the years to retire calculator
+    print(f"\nYour annual savings rate (of after tax income) is {user.savingsRate}%. Starting with your current savings of " + pC(user.currentPortfolioBal) + 
+    " plus saving and additional " + pC(user.annualSavings) + " per year, you will accumulate " + pC(user.amtNeededToRetire) + 
+    f" in {user.yearsToRetire} years. You will be {user.age + user.yearsToRetire}. At that point you can begin withdrawing no more than {user.withdrawalRate}% which is " + 
+    pC(user.withdrawalAmt) + f" per year. Considering your expected average annual return on investment of {user.annualROR}%, ", end = " ")
+    if (user.yearsToDeplete < 0):
+        print(f"these funds will hopefully outlast you, and even grow over time.")
+    else:
+        print(f"These funds should last you {user.yearsToDeplete} years, or until you are {user.age + user.yearsToDeplete}.")
 
 
   render() {
