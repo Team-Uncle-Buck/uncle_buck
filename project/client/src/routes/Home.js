@@ -353,8 +353,10 @@ class Home extends React.Component {
     const submitted = status === "results";
     return (
       <>
+        {/* Load Form */}
         {!submitted && this.renderForm()}
         {/* {submitted && <p>Thank you! We will talk to you soon!</p>} */}
+        {/* Show Results */}
         {submitted && <div id='results'>{this.printResults()}</div>}
         </>
     );
