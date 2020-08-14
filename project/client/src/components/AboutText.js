@@ -1,4 +1,5 @@
 import React from "react";
+import CodeOfConduct from "./CodeOfConduct";
 
 function AboutText() {
   return (
@@ -114,7 +115,8 @@ function AboutText() {
       <section>
         <h4>Code of Conduct</h4>
         <p>LINK TO CODE OF CONDUCT DOCUMENT HERE</p>
-        {/* <CodeOfConduct /> */}
+        <Nav.Link href="/code_of_conduct">Code of Conduct</Nav.Link>
+        {/* <CodeOfConduct/> */}
       </section>
       <section>
         <h4>License</h4>

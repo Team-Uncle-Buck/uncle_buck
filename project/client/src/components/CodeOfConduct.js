@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import CodeOfConductPath from '../../../../CodeOfConduct.md'
+import CodeOfConductPath from './CodeOfConduct.md'
 
 class CodeOfConduct extends React.Component {
   constructor(props) {
