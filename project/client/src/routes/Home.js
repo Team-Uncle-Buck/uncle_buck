@@ -35,6 +35,12 @@ class Home extends React.Component {
     
   }
 
+  myChangeHandler = (event) => {
+    let nam = event.target.name; // pulls from "name" attribute in input
+    let val = event.target.value; // pulls from "value" attribute in input
+    this.setState({[nam]: val});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     console.log('The link was clicked.');
@@ -61,7 +67,7 @@ class Home extends React.Component {
                 name="age"
                 placeholder="Age" 
                 value={this.state.age} 
-                onChange={e => this.setState({ age: e.target.value })}
+                onChange={this.myChangeHandler}
                 />
             </Col>
           </FormGroup>
@@ -73,10 +79,10 @@ class Home extends React.Component {
             <Col sm={10}>
             <Input 
                 type="text" 
-                name="incomeAfterTaxes"
+                name="annualIncomeAfterTaxes"
                 placeholder="50,000" 
                 value={this.state.annualIncomeAfterTaxes} 
-                onChange={e => this.setState({ annualIncomeAfterTaxes: e.target.value })}
+                onChange={this.myChangeHandler}
                 />
             </Col>
           </FormGroup>
@@ -91,7 +97,7 @@ class Home extends React.Component {
                 name="yearlyExpenses"
                 placeholder="30,000" 
                 value={this.state.yearlyExpenses} 
-                onChange={e => this.setState({ yearlyExpenses: e.target.value })}
+                onChange={this.myChangeHandler}
                 aria-describedby="expensesHelpBlock"
             /> 
               <Form.Text id="expensesHelpBlock" muted>
@@ -110,7 +116,7 @@ class Home extends React.Component {
                 name="yearlySavings"
                 placeholder="20,000" 
                 value={this.state.yearlySavings} 
-                onChange={e => this.setState({ yearlySavings: e.target.value })}
+                onChange={this.myChangeHandler}
                 aria-describedby="savingsHelpBlock"
             /> 
               <Form.Text id="savingsHelpBlock" muted>
@@ -129,7 +135,7 @@ class Home extends React.Component {
                 name="portfolioBalance"
                 placeholder="20,000" 
                 value={this.state.portfolioBalance} 
-                onChange={e => this.setState({ portfolioBalance: e.target.value })}
+                onChange={this.myChangeHandler}
                 aria-describedby="portfolioHelpBlock"
             />
               <Form.Text id="portfolioHelpBlock" muted>
@@ -150,7 +156,7 @@ class Home extends React.Component {
                 type="text" 
                 name="rateOfReturn"
                 placeholder="5.0" 
-                value={this.state.rateOfReturn} 
+                onChange={this.myChangeHandler} 
                 onChange={e => this.setState({ rateOfReturn: e.target.value })}
             />
             </Col>
@@ -163,7 +169,7 @@ class Home extends React.Component {
                 type="text" 
                 name="riskTolerance" 
                 value={this.state.riskTolerance} 
-                onChange={e => this.setState({ riskTolerance: e.target.value })}
+                onChange={this.myChangeHandler}
                 >
                   <option value="1">Low - Save More than Needed</option>
                   <option value="2">Medium - Save Recommended Amount</option>
