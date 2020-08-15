@@ -4,7 +4,7 @@ import './App.css';
 
 import Home from "./routes/Home";
 import About from "./routes/About";
-// import Learn from "./routes/Learn";
+import SongPage from "./routes/SongPage";
 import NoMatch from "./routes/NoMatch";
 import CodePage from "./routes/CodePage";
 import LicensePage from "./routes/LicensePage";
@@ -25,7 +25,7 @@ class App extends Component {
               <Route path="/about" component={About} />
               <Route path="/CodePage" component={CodePage} />
               <Route path="/LicensePage" component={LicensePage} />
-              {/* <Route path="/learn" component={Learn} /> */}
+              <Route path="/SongPage" component={SongPage} />
               <Route component={NoMatch} />
             </Switch>
           </Router>

@@ -29,6 +29,7 @@ class Navigation extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
+
             <Nav.Link style={{color: this.state.colorz}} href="/">Calculator</Nav.Link>
             <Nav.Link style={{color: this.state.colorz}} href="/About">About</Nav.Link>
             {/* Theme Song */}
@@ -48,6 +49,7 @@ class Navigation extends Component {
                 <NavDropdown.Item as="button" id="pink_display" onClick={() => this.setState({ backgroundcolor: 'rgba(195,196,196, .7)', colorz: 'rgba(209, 109, 139, 1)' })}>Perfect Pink</NavDropdown.Item>
               </ul>
             </div>
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>
