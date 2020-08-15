@@ -12,7 +12,7 @@ function AboutText() {
   return (
     <div className="about__text">
       <section>
-        <h4>!!!  Disclaimer  !!!</h4>
+        <h4 className="about__title">!!!  Disclaimer  !!!</h4>
         <p>
           This tool is meant for entertainment purposes only. We are not 
           financial professionals. We assume no risk or responsibility for your 
@@ -122,7 +122,8 @@ function AboutText() {
         2.0 we'll expand the calculator reflect such a scenario.
         </p>
       </section>
-      <section>
+      <br />
+        <section>
         <h4>
         <a href="/CodePage">Code of Conduct</a>
         </h4>

@@ -54,7 +54,7 @@ def getUserInput():
                     currentPortfolioBal, annualROR, riskTolerance)
     else: # this is dummy data for development purposes
         if (v): print("*** using default user")
-        return User(40, 50000, 20000, 30000, 0, 5.0, 2)
+        return User(40, 50000, 30000, 20000, 20000, 5.0, 2)
 
 def calcSavingsRate(annualSavings, annualIncomeAfterTaxes):
     sr = round(annualSavings / annualIncomeAfterTaxes * 100, 0)
@@ -78,12 +78,14 @@ def retireCalcs(user):
 
 def tvmPeriods(PV, C, r, FV):
     """this function calculates the number of periods (years) it takes to get from the present value (PV) to the future value (FV) given a periodic rate (r) and periodic payment (C) """
+    print(f"PV={PV} C={C} r={r} FC={FV}")
     r /= 100
     n = (FV * r + C)
     n = n / (PV * r + C)
     n = math.log(n)
     n = n / (math.log(1 + r))
     n = math.ceil(n * 10) / 10
+    print(f"n={n}")
     return n
 
 def calcYearsToRetire(user):
