@@ -27,7 +27,7 @@ class User(object):
 
 def getUserInput():
     """prompts user to input key data required for calcs"""
-    if (0):
+    if (1):
         if (v): print('*** getting user input')
         age = int(input("\nWhat is your current age?\n(round to the nearest year)\n"))
         print("\nFor the following amounts, please round to the nearest thousand. Enter amounts in this format 15000 with no commas or currency symbols.")
@@ -81,13 +81,9 @@ def tvmPeriods(PV, C, r, FV):
     print(f"PV={PV} C={C} r={r} FC={FV}")
     r /= 100
     n = (FV * r + C)
-    print(f"n={n}")
     n = n / (PV * r + C)
-    print(f"n={n}")
     n = math.log(n)
-    print(f"n={n}")
     n = n / (math.log(1 + r))
-    print(f"n={n}")
     n = math.ceil(n * 10) / 10
     print(f"n={n}")
     return n
