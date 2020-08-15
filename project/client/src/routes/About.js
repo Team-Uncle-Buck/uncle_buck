@@ -63,7 +63,7 @@ class About extends React.Component {
                         title={video.snippet.title}
                         thumbnail={video.snippet.thumbnails.medium.url}
                       />
-                    )): <h6>No result</h6>}
+                    )): <h6 className='about_text'>No result</h6>}
                   </Row>
                 </Container>   
               </Col>

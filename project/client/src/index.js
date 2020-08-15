@@ -9,7 +9,8 @@ import './fonts/lato/Lato-Regular.ttf';
 import './fonts/roboto_slab/RobotoSlab-Light.ttf';
 import './fonts/roboto_slab/RobotoSlab-Medium.ttf';
 import './fonts/barlow/Barlow-Medium.ttf';
-
+import './fonts/barlow/Barlow-Light.ttf';
+import './fonts/barlow/Barlow-Regular.ttf';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
