@@ -29,9 +29,10 @@ class Navigation extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="/SongPage">Song</Nav.Link>
             <Nav.Link style={{color: this.state.color}} href="/">Calculator</Nav.Link>
             <Nav.Link style={{color: this.state.color}} href="/About">About</Nav.Link>
+            {/* Theme Song */}
+            <Nav.Link href="/SongPage">Song</Nav.Link> 
             <NavDropdown title="Display Theme" id="basic-nav-dropdown" style={{fontcolor: this.state.color}}>
                 <NavDropdown.Item as="button" id="light_display" onClick={() => this.setState({ backgroundcolor: 'white', color:'#666666'})}>Light</NavDropdown.Item>
                 <NavDropdown.Item as="button" id="dark_display" onClick={() => this.setState({ backgroundcolor: 'black', color: 'white'})}>Dark</NavDropdown.Item>
