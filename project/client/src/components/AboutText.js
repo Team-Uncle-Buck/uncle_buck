@@ -3,24 +3,42 @@ import React from "react";
 import "./AboutText.css";
 
 import CodeOfConduct from "./CodeOfConduct";
+import { Route } from "react-router-dom";
+import CodePage from "../routes/CodePage";
+import LicensePage from "../routes/LicensePage";
 
 
 function AboutText() {
   return (
     <div className="about__text">
       <section>
-        <h4 className="about__title">About</h4>
+        <h4>!!!  Disclaimer  !!!</h4>
         <p>
-        This is a Financial Independence Calculator Full-Stack Web App created
-        for the PSU Open Source class in the Summer 2020 by team "Uncle Buck".
-        The calculator is a toy meant for entertainment purposes by allowing
-        the user play around with some number to see if and when they can reach
-        financial independence.
+          This tool is meant for entertainment purposes only. We are not 
+          financial professionals. We assume no risk or responsibility for your 
+          financial affairs, well being, nor do we assume any liability for your
+          decisions. Everybody's financial situation is different, you cannot 
+          rely on a single tool for guidance. For real advice on personal 
+          finance, find a trusted certified public accountant
+          <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html"> (CPA) </a> 
+          or certified financial planner 
+          <a target="_blank" href="https://www.letsmakeaplan.org/"> (CFP)</a>.
         </p>
         <br />
       </section>
       <section>
-        <h4 className="about__title">Financial Independence</h4>
+          <h4 className="about__title">About</h4>
+          <p>
+          This is a Financial Independence Calculator Full-Stack Web App created
+          for the PSU Open Source class in the Summer 2020 by team "Uncle Buck".
+          The calculator is a toy meant for entertainment purposes by allowing
+          the user play around with some number to see if and when they can reach
+          financial independence.
+          </p>
+          <br />
+      </section>
+      <section>
+        <h4>Financial Independence</h4>
         <p>
         Financial Independence is the status of having enough income (from 
         investments, passive businesses, real estate, etc.) to pay for one's
@@ -32,9 +50,6 @@ function AboutText() {
         <br />
       </section>
       <section>
-
-        <h4 className="about__title">!!!  Disclaimer  !!!</h4>
-
         <h4>Education ~ How Our Calculator Works</h4>
         <p>
         <b>Here is how our calculator works.</b><br></br>As mentioned above, 
@@ -108,39 +123,15 @@ function AboutText() {
         </p>
       </section>
       <section>
-        <h4>!!!  Disclaimer  !!!</h4>
-
-        <p>
-        This tool is meant for entertainment purposes only. We are not 
-        financial professionals. We assume no risk or responsibility for your 
-        financial affairs, well being, nor do we assume any liability for your
-        decisions. Everybody's financial situation is different, you cannot 
-        rely on a single tool for guidance. For real advice on personal 
-        finance, find a trusted certified public accountant
-        <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html"> (CPA) </a> 
-        or certified financial planner 
-        <a target="_blank" href="https://www.letsmakeaplan.org/"> (CFP)</a>.
-        </p>
+        <h4>
+        <a href="/CodePage">Code of Conduct</a>
+        </h4>
         <br />
       </section>
       <section>
-        <h4>Code of Conduct</h4>
-
-        <p>
-        LINK TO CODE OF CONDUCT DOCUMENT HERE
-        </p>
-        <br />
-
-        <p>LINK TO CODE OF CONDUCT DOCUMENT HERE</p>
-        {/* <Nav.Link href="/code_of_conduct">Code of Conduct</Nav.Link> */}
-        {/* <CodeOfConduct/> */}
-
-      </section>
-      <section>
-        <h4>License</h4>
-        <p>
-        LINK TO LICENSE HERE
-        </p>
+        <h4>
+        <a href="/LicensePage">License</a>
+        </h4>
         <br />
       </section>
       <section>

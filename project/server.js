@@ -21,8 +21,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static( 'client/build' ));
 }
 
-
-
 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=FinanceIndependence&type=video&key=${GOOGLE_API_KEY}`;
 
 app.get('/', (req, res) => {
@@ -35,6 +33,7 @@ app.get('/videos', (req,res) => {
   axios.get(url)
     .then( (response) => {
       res.send(response.data);
+      console.log(response.data);
     })
     .catch((err)=>{
       console.log(err);

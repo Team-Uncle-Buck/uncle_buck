@@ -166,20 +166,27 @@ class Home extends React.Component {
     return n;
   }
 
+  currFmt(amt) {
+    return Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(amt);
+}
+
   printResults(){
     // Displays the results of the years to retire calculator
     let results = `Your annual savings rate (of after tax income) is ${this.calcSavingsRate()}%. 
-    Starting with your current savings of ${this.state.portfolioBalance} plus saving and additional 
-    ${this.state.yearlySavings} per year, you will accumulate ${this.getAmountNeededToRetire()} `; 
+    Starting with your current savings of ${this.currFmt(this.state.portfolioBalance)} plus saving and additional 
+    ${this.currFmt(this.state.yearlySavings)} per year, you will accumulate ${this.currFmt(this.getAmountNeededToRetire())} `; 
     
     if(this.calcYearsToRetire() < 0 || this.calcYearsToRetire() === Infinity){
       results += `never... If you don't currently have enough money saved for retirement, 
                   then your first priority needs to be either (better yet, both) increasing 
                   your income or (and) decreasing your expenses. `;
     } else {
-        results += `in ${this.calcYearsToRetire()} years. You will be ${Math.round(parseInt(this.state.age) + parseFloat(this.calcYearsToRetire()))}. 
+        results += `in ${this.calcYearsToRetire().toFixed(1)} years. You will be ${Math.round(parseInt(this.state.age) + parseFloat(this.calcYearsToRetire()))}. 
                     At that point you can begin withdrawing no more than ${this.getWithdrawalRate()}% which is 
-                    ${this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire()} per year. Considering your expected average annual return on investment 
+                    ${this.currFmt(this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire())} per year. Considering your expected average annual return on investment 
                     of ${this.state.rateOfReturn}%, `;
         if(this.calcYearsToDeplete() < 0){
               results += "these funds will hopefully outlast you, and even grow over time.";
