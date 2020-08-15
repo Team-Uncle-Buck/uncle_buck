@@ -1,3 +1,48 @@
 .title {
   font-family: Barlow Medium
 }
+
+#dark_display{
+  background-color: #000000;
+  color: rgba(255, 255, 255, .99);
+}
+
+#money_display{
+  background-color: #85bb65;
+  color: #065C27;
+}
+
+#gold_display{
+  background-color: rgba(218,165,32, .9);
+  color: rgba(255, 215, 0, 1);
+}
+
+#royal_display{
+  background-color: rgba(61,0, 91, .9);
+  color: rgba(209, 178, 224, 1);
+}
+
+#silver_display{
+  background-color: #9fa4a7;
+  color:#eeeeef;
+  }
+
+  #ruby_display{
+    color:  rgb(103, 26, 26);
+    background-color: rgb(220, 88, 117);
+  }
+
+  #blue_display{
+   background-color: rgba(25,68,121,1);
+   color:  rgba(152, 193, 220, .8);
+  }
+
+  #emerald_display{
+    background-color: rgba(23,43,57, 1);
+    color: rgba(26, 177, 136, .7);
+  }
+ 
+  #pink_display{
+  color: rgba(209, 109, 139, 1);
+  background-color:rgba(195,196,196, .7);
+  }
