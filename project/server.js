@@ -8,7 +8,7 @@ const path = require("path");
 
 require('dotenv').config();
 const port = process.env.PORT || 5000;
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || "AIzaSyAvEi54OTuwv5lFJ-ac4R61LJ60G1O9qs0";
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || "AIzaSyCHnGhXVB30gZ85zr1Lmf0P_dbjGWI9T84";
 
 const app = express();
 
@@ -20,8 +20,6 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static( 'client/build' ));
 }
-
-
 
 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=FinanceIndependence&type=video&key=${GOOGLE_API_KEY}`;
 
@@ -35,6 +33,7 @@ app.get('/videos', (req,res) => {
   axios.get(url)
     .then( (response) => {
       res.send(response.data);
+      console.log(response.data);
     })
     .catch((err)=>{
       console.log(err);
