@@ -11,7 +11,7 @@ class Jumbotron extends Component {
       <Jumbo>
         <Container>
           <h1 className="jumbo__title">Tia: "What is financial independence?"</h1>
-          <p className="jumbo__text">Uncle Buck: "Basically it means you can live your life without 
+          <p className="jumbo__text"><strong>Uncle Buck: </strong>"Basically it means you can live your life without 
           having to worry about steady employment to cover your expenses. 
           You know, off the rat wheel and onto the cheese wheel. You catch 
           my drift? So you hit the financial independence benchmark and you
