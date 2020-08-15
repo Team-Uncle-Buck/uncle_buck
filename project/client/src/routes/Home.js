@@ -74,7 +74,7 @@ class Home extends React.Component {
     // alert("withdrawalRate = " + withdrawalRate);
     console.log("withdrawalRate = " + withdrawalRate);
     // alert("withdrawalAmount = " + this.state.withdrawalAmount);
-    console.log("withdrawalAmount = " + this.state.withdrawalAmount);
+    console.log("withdrawalAmount = " + withdrawalAmount);
     // alert("amountNeededToSave = " + amountNeededToSave);
     console.log("amountNeededToSave = " + amountNeededToSave);
     // alert("yearsToDeplete = " + yearsToDeplete);
@@ -83,15 +83,17 @@ class Home extends React.Component {
   }
 
   getAmountNeededToRetire(){
-    return this.state.yearlyExpenses.replace(',','') * this.getMultiplier();
+    let amountNeededToRetire = parseFloat(this.state.yearlyExpenses.replace(',','') * this.getMultiplier());
+    // alert("amountNeededToRetire = " + amountNeededToRetire);
+    return amountNeededToRetire;
   }
 
   getMultiplier() {
     let multiplier = 0;
 
-    if (this.state.riskTolerance == '3'){
+    if (this.state.riskTolerance === '3'){
       multiplier = 20;
-    } else if (this.state.riskTolerance == '2'){
+    } else if (this.state.riskTolerance === '2'){
       multiplier = 25;
     } else {
       multiplier = 30;
@@ -111,22 +113,23 @@ class Home extends React.Component {
     return savingsRate;
   }
 
-  calcYearsToRetire(amountNeededToRetire){
+  calcYearsToRetire(){
     // calculates the years to retire based on user input
     return this.tvmPeriods();
   }
 
-  tvmPeriods(amountNeededToRetire){
+  tvmPeriods(){
     // this function calculates the number of periods (years) it takes to get from 
     // the present value (PV) to the future value (FV) given a periodic rate 
     // (r) and periodic payment (C)
     let PV = this.state.portfolioBalance.replace(',','');
     let C = this.state.yearlySavings.replace(',','');
     let r = this.state.rateOfReturn.replace(',','');
-    let FV = this.state.yearlyExpenses.replace(',','') * this.getMultiplier();
+    // let FV = this.state.yearlyExpenses.replace(',','') * this.getMultiplier();
+    let FV = this.getAmountNeededToRetire();
 
-    // alert("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
-    console.log("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
+    // alert("tvmPeriods values = " + PV + " " + C + " " + r + " " + FV);
+    console.log("tvmPeriods FV values = " + FV);
     let n = 0;
 
     r /= 100;
@@ -135,6 +138,8 @@ class Home extends React.Component {
     n = Math.log(n);
     n = n / (Math.log(1 + r));
     n = Math.ceil(n * 10) / 10;
+
+    // alert("calcYearsToRetire = " + n);
 
     return n;
   }
@@ -177,7 +182,7 @@ class Home extends React.Component {
     // Displays the results of the years to retire calculator
     let results = `Your annual savings rate (of after tax income) is ${this.calcSavingsRate()}%. 
     Starting with your current savings of ${this.currFmt(this.state.portfolioBalance)} plus saving and additional 
-    ${this.currFmt(this.state.yearlySavings)} per year, you will accumulate ${this.currFmt(this.getAmountNeededToRetire())} `; 
+    ${"$" + this.state.yearlySavings + ".00"} per year, you will accumulate ${this.currFmt(this.getAmountNeededToRetire())} `; 
     
     if(this.calcYearsToRetire() < 0 || this.calcYearsToRetire() === Infinity){
       results += `never... If you don't currently have enough money saved for retirement, 
