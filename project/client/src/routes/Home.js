@@ -128,13 +128,18 @@ class Home extends React.Component {
     // alert("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
     console.log("tvmPeriods values = " + PV + ", " + C + ", " + r + ", " + FV);
     let n = 0;
-
+    console.log("n="+n);
     r /= 100;
     n = (FV * r + C);
+    console.log("n="+n);
     n = n / (PV * r + C);
+    console.log("n="+n);
     n = Math.log(n);
+    console.log("n="+n);
     n = n / (Math.log(1 + r));
+    console.log("n="+n);
     n = Math.ceil(n * 10) / 10;
+    console.log("n="+n);
 
     return n;
   }

@@ -123,7 +123,7 @@ function AboutText() {
         </p>
       </section>
       <br />
-      <section>
+        <section>
         <h4>
         <a href="/CodePage">Code of Conduct</a>
         </h4>
