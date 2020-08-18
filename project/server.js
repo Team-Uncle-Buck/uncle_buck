@@ -8,7 +8,7 @@ const path = require("path");
 
 require('dotenv').config();
 const port = process.env.PORT || 5000;
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || "AIzaSyANrIw_lVdjg6DECyOyxrOl_5rXpD7T9Xc";
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 const app = express();
 
