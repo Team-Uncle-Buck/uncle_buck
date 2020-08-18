@@ -208,8 +208,8 @@ class Home extends React.Component {
   renderForm() {
     return (
           <Form onSubmit={ this.handleSubmit }>
-            <h3>Calculate Your FI Date:</h3>
-          <FormGroup as={Row} controlId="1">
+            <h3 className='home_title'>Calculate Your FI Date:</h3>
+          <FormGroup as={Row} controlId="1" className='home_text'>
             <Label column sm={2}>
             <a href="https://www.youtube.com/watch?v=K7l5ZeVVoCA" target="_blank"> What's My Age Again? </a>
             </Label>
@@ -224,7 +224,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="2">
+          <FormGroup as={Row} controlId="2" className='home_text'>
             <Label column sm={2}>
               How Much Money Do You Make After Taxes? <a href="https://smartasset.com/taxes/paycheck-calculator" target="_blank">Need Help?</a>
             </Label>
@@ -239,7 +239,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="3">
+          <FormGroup as={Row} controlId="3" className='home_text'>
             <Label column sm={2}>
               How Much Money Do You Spend Each Year? <a href="quicken.com/budget-calculator" target="_blank">Need Help?</a>
             </Label>
@@ -258,7 +258,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="5">
+          <FormGroup as={Row} controlId="5" className='home_text'>
             <Label column sm={2}>
               How Much Money Do You Save Each Year?
             </Label>
@@ -277,7 +277,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="7">
+          <FormGroup as={Row} controlId="7" className='home_text'>
             <Label column sm={2}>
               How much do you have in savings (savings account, 401k, IRA, brokerage account, etc)? 
             </Label>
@@ -299,7 +299,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="8">
+          <FormGroup as={Row} controlId="8" className='home_text'>
             <Label column sm={2}>
              What Is Your Expected Annual Rate Of Return On Investments After Inflation?
             </Label>
@@ -314,7 +314,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="8">
+          <FormGroup as={Row} controlId="8" className='home_text'>
             <Label column sm={2}>
              What Percentage Of Your Nest Egg Would You Like To Withdraw?
             </Label>
@@ -335,7 +335,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row} controlId="9">
+          <FormGroup as={Row} controlId="9" className='home_text'>
             <Label column sm={2}>What Is Your Risk Tolerance?</Label>
             <Col sm={10}> 
             <select 
@@ -351,7 +351,7 @@ class Home extends React.Component {
             </Col>
           </FormGroup>
 
-          <FormGroup as={Row}>
+          <FormGroup as={Row} className='home_text'>
             <Col sm={{ span: 10, offset: 2 }}>
               <Button type="submit" onClick={this.handleSubmit}>Calculate FI Date!</Button>
             </Col>

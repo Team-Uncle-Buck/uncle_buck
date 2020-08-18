@@ -38,7 +38,7 @@ function AboutText() {
           <br />
       </section>
       <section>
-        <h4>Financial Independence</h4>
+        <h4 className="about__title">Financial Independence</h4>
         <p>
         Financial Independence is the status of having enough income (from 
         investments, passive businesses, real estate, etc.) to pay for one's
@@ -50,7 +50,7 @@ function AboutText() {
         <br />
       </section>
       <section>
-        <h4>Education ~ How Our Calculator Works</h4>
+        <h4 className="about__title">Education ~ How Our Calculator Works</h4>
         <p>
         <b>Here is how our calculator works.</b><br></br>As mentioned above, 
         reaching the state of financial independence means that your basic 
@@ -124,19 +124,19 @@ function AboutText() {
       </section>
       <br />
         <section>
-        <h4>
+        <h4 className="about__title">
         <a href="/CodePage">Code of Conduct</a>
         </h4>
         <br />
       </section>
       <section>
-        <h4>
+        <h4 className="about__title">
         <a href="/LicensePage">License</a>
         </h4>
         <br />
       </section>
       <section>
-        <h4>Team Uncle Buck</h4>
+        <h4 className="about__title">Team Uncle Buck</h4>
         <p>
         <a target="_blank" href="https://github.com/youn0125">Mi Yon Kim</a><br></br>
         <a target="_blank" href="https://github.com/tlan2">Tom More "$ Less Problems" Lancaster</a><br></br>
@@ -147,7 +147,7 @@ function AboutText() {
         <br />
       </section>
       <section>
-        <h4>Additional Resources</h4>
+        <h4 className="about__title">Additional Resources</h4>
         <p>
         <a target="_blank" href="https://smartasset.com/taxes/paycheck-calculator">Federal Paycheck Calculator</a><br></br>
         <a target="_blank" href="https://www.mrmoneymustache.com/">MMM Blog</a><br></br>
@@ -161,20 +161,6 @@ function AboutText() {
 
         <a target="_blank" href="https://www.aicpa.org/forthepublic/findacpa.html">Find a CPA</a><br></br>
         <a target="_blank" href="https://www.letsmakeaplan.org/">Find a CFP</a><br></br>
-
-        </p>
-        <br />
-      </section>
-      <section>
-        <h4>What is Lorem Ipsum?</h4>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer 
-        took a galley of type and scrambled it to make a type specimen book. It has survived not 
-        only five centuries, but also the leap into electronic typesetting, remaining essentially 
-        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
-        including versions of Lorem Ipsum.
 
         </p>
         <br />

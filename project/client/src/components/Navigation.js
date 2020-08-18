@@ -28,7 +28,7 @@ class Navigation extends Component {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
+          <Nav className="ml-auto title">
 
             <Nav.Link style={{color: this.state.colorz}} href="/">Calculator</Nav.Link>
             <Nav.Link style={{color: this.state.colorz}} href="/About">About</Nav.Link>

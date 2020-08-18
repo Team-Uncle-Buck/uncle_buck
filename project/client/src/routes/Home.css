@@ -19,3 +19,12 @@
   text-align: left;
   width: 90%;
 }
+
+.home_text {
+  font-family: Barlow Regular; 
+}
+
+.home_title {
+  font-family: Barlow Medium;
+  font-weight: 500;
+}
