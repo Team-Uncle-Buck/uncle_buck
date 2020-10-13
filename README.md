@@ -1,8 +1,10 @@
-# Uncle Buck
+![Uncle Buck logo](project/client/public/logo.png)
 
 ## Website
 
 [uncle-buck.herokuapp.com/](https://uncle-buck.herokuapp.com/)
+
+![form example](project/client/public/form.png)
 
 ## About
 This is a Financial Independence Calculator Full-Stack Web App created for the PSU Open Source class in the Summer 2020 by team "Uncle Buck". The calculator is a toy meant for entertainment purposes by allowing the user play around with some number to see if and when they can reach financial independence.
