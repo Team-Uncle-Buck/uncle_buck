@@ -28,3 +28,9 @@
   font-family: Barlow Medium;
   font-weight: 500;
 }
+
+.error {
+  color:#db2269;
+  font-size: 0.625em;
+  display: relative;
+}
