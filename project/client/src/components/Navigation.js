@@ -33,8 +33,9 @@ class Navigation extends Component {
             <Nav.Link style={{color: this.state.colorz}} href="/">Calculator</Nav.Link>
             <Nav.Link style={{color: this.state.colorz}} href="/About">About</Nav.Link>
             {/* Theme Song */}
-            <Nav.Link style={{color: this.state.colorz}} href="/SongPage">Song</Nav.Link> 
-            <div class="dropdown">
+            <Nav.Link style={{color: this.state.colorz}} href="/SongPage">Song</Nav.Link>
+             {/* THEME SWITCHER - NOT WORKING  */}
+            {/* <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" style={{color: this.state.colorz}} type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Navbar Theme</button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <NavDropdown.Item as="button" id="light_display" onClick={() => this.setState({ backgroundcolor: 'white', colorz:'#666666'})}>Light</NavDropdown.Item>
@@ -48,7 +49,7 @@ class Navigation extends Component {
                 <NavDropdown.Item as="button" id="emerald_display" onClick={() => this.setState({ backgroundcolor: 'rgba(23,43,57, 1)', colorz: 'rgba(26, 177, 136, .7)' })}>Emerald</NavDropdown.Item>
                 <NavDropdown.Item as="button" id="pink_display" onClick={() => this.setState({ backgroundcolor: 'rgba(195,196,196, .7)', colorz: 'rgba(209, 109, 139, 1)' })}>Perfect Pink</NavDropdown.Item>
               </ul>
-            </div>
+            </div> */}
 
           </Nav>
         </Navbar.Collapse>

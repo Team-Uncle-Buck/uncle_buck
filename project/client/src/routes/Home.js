@@ -13,6 +13,14 @@ import {Input, NavLink} from 'reactstrap';
 //         Label, Input, Form, Button, 
 //         Row, FormCheck } from 'reactstrap';
 
+const validNumberRegex = RegExp(/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/i);
+const validDecimalRegex = RegExp(/^\d*\.?\d+$/i);
+const validateForm = errors => {
+  let valid = true;
+  Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+  return valid;
+};
+
 class Home extends React.Component {
   constructor() {
     super();
@@ -26,19 +34,89 @@ class Home extends React.Component {
       rateOfReturn: '',
       withdrawalAmount: '',
       riskTolerance: '',
-      status: 'form'
+      status: 'form',
+      errors: {
+        age: '',
+        annualIncomeAfterTaxes: '',
+        yearlyExpenses: '',
+        yearlySavings: '',
+        portfolioBalance: '',
+        rateOfReturn: '',
+        withdrawalAmount: '',
+        riskTolerance: ''
+      }
     };
   }
 
   myChangeHandler = (event) => {
-    let nam = event.target.name; // pulls from "name" attribute in input
-    let val = event.target.value; // pulls from "value" attribute in input
+    event.preventDefault();
+    let name = event.target.name; // pulls from "name" attribute in input
+    let value = event.target.value; // pulls from "value" attribute in input
+    let errors = this.state.errors;
+    // const { name, value } = event.target;
     
-    this.setState({[nam]: val});
+
+    switch (name) {
+      case 'age': 
+        errors.age = 
+          value > 110
+            ? 'Age must be positive number and less than the oldest living person.'
+            : '';
+        break;
+      case 'annualIncomeAfterTaxes': 
+        errors.annualIncomeAfterTaxes = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'yearlyExpenses': 
+        errors.yearlyExpenses = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'yearlySavings': 
+        errors.yearlySavings = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'portfolioBalance': 
+        errors.portfolioBalance = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'rateOfReturn': 
+        errors.rateOfReturn = 
+          validDecimalRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number with no commas. Decimals optional.';
+          break;
+      case 'withdrawalAmount':
+        errors.withdrawalAmount = 
+          validDecimalRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number with no commas. Decimals optional.';
+          break;
+      default:
+        break;
+    }
+
+    this.setState({errors, [name]: value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    if(validateForm(this.state.errors)) {
+      console.info('Valid Form');
+      this.retireCalcs();
+      this.setState({ status: "results" });
+    }else{
+      console.error('Invalid Form');
+      console.log(this.state.errors);
+    }
+
     console.log('The link was clicked.');
     console.log(`Age: ${this.state.age}`);
     console.log(`Annual Income After Taxes: ${this.state.annualIncomeAfterTaxes}`);
@@ -48,12 +126,8 @@ class Home extends React.Component {
     console.log(`Rate of Return: ${this.state.rateOfReturn}`);
     console.log(`Withdrawal Amount: ${this.state.withdrawalAmount}`);
     console.log(`Risk Tolerance: ${this.state.riskTolerance}`);
-
-    // alert("Savings Rate = " + this.calcSavingsRate());
     console.log("Savings Rate = " + this.calcSavingsRate());
-    this.retireCalcs();
-
-    this.setState({ status: "results" });
+    
   }
 
   retireCalcs(){
@@ -151,12 +225,6 @@ class Home extends React.Component {
     return withRate;
   }
 
-  // getWithdrawalAmount(){
-  //   // returns the amount you of money you can withdraw each year to stay financially independent
-  //   // return this.getWithdrawalRate() / 100 * this.getAmountNeededToRetire();
-  //   return parseFloat(this.state.withdrawalAmount);
-  // }
-
   calcYearsToDeplete(){
     // calculates the number of years it will take to deplete retirement funds
     let wa = this.state.withdrawalAmount;
@@ -181,7 +249,7 @@ class Home extends React.Component {
   printResults(){
     // Displays the results of the years to retire calculator
     let results = `Your annual savings rate (of after tax income) is ${this.calcSavingsRate()}%. 
-    Starting with your current savings of ${this.currFmt(this.state.portfolioBalance)} plus saving and additional 
+    Starting with your current savings of ${'$' + this.state.portfolioBalance} plus saving and additional 
     ${"$" + this.state.yearlySavings + ".00"} per year, you will accumulate ${this.currFmt(this.getAmountNeededToRetire())} `; 
     
     if(this.calcYearsToRetire() < 0 || this.calcYearsToRetire() === Infinity){
@@ -205,9 +273,11 @@ class Home extends React.Component {
     }
   }
 
+  // FORM
   renderForm() {
+    const {errors} = this.state;
     return (
-          <Form onSubmit={ this.handleSubmit }>
+          <Form onSubmit={ this.handleSubmit } noValidate>
             <h3 className='home_title'>Calculate Your FI Date:</h3>
           <FormGroup as={Row} controlId="1" className='home_text'>
             <Label column sm={2}>
@@ -220,7 +290,10 @@ class Home extends React.Component {
                 placeholder="Age" 
                 value={this.state.age} 
                 onChange={this.myChangeHandler}
+                noValidate
                 />
+                 {errors.age.length > 0 && 
+                <span className='error'>{errors.age}</span>}
             </Col>
           </FormGroup>
 
@@ -235,7 +308,10 @@ class Home extends React.Component {
                 placeholder="50,000" 
                 value={this.state.annualIncomeAfterTaxes} 
                 onChange={this.myChangeHandler}
+                noValidate
                 />
+                 {errors.annualIncomeAfterTaxes.length > 0 && 
+                <span className='error'>{errors.annualIncomeAfterTaxes}</span>}
             </Col>
           </FormGroup>
 
@@ -251,7 +327,9 @@ class Home extends React.Component {
                 value={this.state.yearlyExpenses} 
                 onChange={this.myChangeHandler}
                 aria-describedby="expensesHelpBlock"
-            /> 
+            />
+             {errors.yearlyExpenses.length > 0 && 
+                <span className='error'>{errors.yearlyExpenses}</span>} 
               <Form.Text id="expensesHelpBlock" muted>
               Take your monthly budget and multiply by 12.
               </Form.Text>
@@ -270,7 +348,9 @@ class Home extends React.Component {
                 value={this.state.yearlySavings} 
                 onChange={this.myChangeHandler}
                 aria-describedby="savingsHelpBlock"
-            /> 
+            />
+             {errors.yearlySavings.length > 0 && 
+                <span className='error'>{errors.yearlySavings}</span>} 
               <Form.Text id="savingsHelpBlock" muted>
                 Subtract two numbers above.
               </Form.Text>
@@ -290,6 +370,8 @@ class Home extends React.Component {
                 onChange={this.myChangeHandler}
                 aria-describedby="portfolioHelpBlock"
             />
+             {errors.portfolioBalance.length > 0 && 
+                <span className='error'>{errors.portfolioBalance}</span>}
               <Form.Text id="portfolioHelpBlock" muted>
               If you have more debt than savings, then subtract your total savings from 
               your total debt and enter a negative number here. For example you might have 
@@ -311,6 +393,8 @@ class Home extends React.Component {
                 placeholder="5.0" 
                 onChange={this.myChangeHandler}
             />
+             {errors.rateOfReturn.length > 0 && 
+                <span className='error'>{errors.rateOfReturn}</span>}
             </Col>
           </FormGroup>
 
@@ -327,6 +411,8 @@ class Home extends React.Component {
                 onChange={this.myChangeHandler} 
                 aria-describedby="withdrawalAmountHelpBlock"
                 />
+                 {errors.withdrawalAmount.length > 0 && 
+                <span className='error'>{errors.withdrawalAmount}</span>}
                   <Form.Text id="withdrawalAmountHelpBlock" muted>
                   This is a rule of thumb popularized by the 
                   <a href="https://en.wikipedia.org/wiki/Trinity_study" target="_blank"> Trinity Study. </a> 
@@ -367,7 +453,6 @@ class Home extends React.Component {
       <>
         {/* Load Form */}
         {!submitted && this.renderForm()}
-        {/* {submitted && <p>Thank you! We will talk to you soon!</p>} */}
         {/* Show Results */}
         {submitted && <div id='results'>{this.printResults()}</div>}
         </>
