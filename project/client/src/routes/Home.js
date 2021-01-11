@@ -12,6 +12,7 @@ import {Input, NavLink} from 'reactstrap';
 
 const validNumberRegex = RegExp(/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/i);
 const validDecimalRegex = RegExp(/^\d*\.?\d+$/i);
+const validIntegerRegex = RegExp(/^\d+$/);
 const validateForm = errors => {
   let valid = true;
   Object.values(errors).forEach(val => val.length > 0 && (valid = false));
@@ -441,9 +442,11 @@ class Home extends React.Component {
     switch (name) {
       case 'age': 
         errors.age = 
-          value > 110
-            ? 'Age must be a whole, positive number and less than the oldest living person.'
-            : '';
+          // value > 110 
+          validIntegerRegex.test(value)
+          // (Number.isInteger(value) || value > 0)
+            ? ''
+            : 'Age must be a whole, positive number.';
         break;
       case 'annualIncomeAfterTaxes': 
         errors.annualIncomeAfterTaxes = 
