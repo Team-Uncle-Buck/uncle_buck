@@ -9,12 +9,10 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import FormCheck from 'react-bootstrap/FormCheck'
 import {Input, NavLink} from 'reactstrap';
-// import { Container, Col, FormGroup, 
-//         Label, Input, Form, Button, 
-//         Row, FormCheck } from 'reactstrap';
 
 const validNumberRegex = RegExp(/^(\d+|\d{1,3}(,\d{3})*)(\.\d+)?$/i);
 const validDecimalRegex = RegExp(/^\d*\.?\d+$/i);
+const validIntegerRegex = RegExp(/^\d+$/);
 const validateForm = errors => {
   let valid = true;
   Object.values(errors).forEach(val => val.length > 0 && (valid = false));
@@ -22,8 +20,8 @@ const validateForm = errors => {
 };
 
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       age: '',
@@ -48,88 +46,6 @@ class Home extends React.Component {
     };
   }
 
-  myChangeHandler = (event) => {
-    event.preventDefault();
-    let name = event.target.name; // pulls from "name" attribute in input
-    let value = event.target.value; // pulls from "value" attribute in input
-    let errors = this.state.errors;
-    // const { name, value } = event.target;
-    
-
-    switch (name) {
-      case 'age': 
-        errors.age = 
-          value > 110
-            ? 'Age must be positive number and less than the oldest living person.'
-            : '';
-        break;
-      case 'annualIncomeAfterTaxes': 
-        errors.annualIncomeAfterTaxes = 
-          validNumberRegex.test(value)
-            ? ''
-            : 'Input is not valid! Must be a number.';
-        break;
-      case 'yearlyExpenses': 
-        errors.yearlyExpenses = 
-          validNumberRegex.test(value)
-            ? ''
-            : 'Input is not valid! Must be a number.';
-        break;
-      case 'yearlySavings': 
-        errors.yearlySavings = 
-          validNumberRegex.test(value)
-            ? ''
-            : 'Input is not valid! Must be a number.';
-        break;
-      case 'portfolioBalance': 
-        errors.portfolioBalance = 
-          validNumberRegex.test(value)
-            ? ''
-            : 'Input is not valid! Must be a number.';
-        break;
-      case 'rateOfReturn': 
-        errors.rateOfReturn = 
-          validDecimalRegex.test(value)
-            ? ''
-            : 'Input is not valid! Must be a number with no commas. Decimals optional.';
-          break;
-      case 'withdrawalAmount':
-        errors.withdrawalAmount = 
-          validDecimalRegex.test(value)
-            ? ''
-            : 'Input is not valid! Must be a number with no commas. Decimals optional.';
-          break;
-      default:
-        break;
-    }
-
-    this.setState({errors, [name]: value});
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if(validateForm(this.state.errors)) {
-      console.info('Valid Form');
-      this.retireCalcs();
-      this.setState({ status: "results" });
-    }else{
-      console.error('Invalid Form');
-      console.log(this.state.errors);
-    }
-
-    console.log('The link was clicked.');
-    console.log(`Age: ${this.state.age}`);
-    console.log(`Annual Income After Taxes: ${this.state.annualIncomeAfterTaxes}`);
-    console.log(`Yearly Expenses: ${this.state.yearlyExpenses}`);
-    console.log(`Yearly Savings: ${this.state.yearlySavings}`);
-    console.log(`Portfolio Balance: ${this.state.portfolioBalance}`);
-    console.log(`Rate of Return: ${this.state.rateOfReturn}`);
-    console.log(`Withdrawal Amount: ${this.state.withdrawalAmount}`);
-    console.log(`Risk Tolerance: ${this.state.riskTolerance}`);
-    console.log("Savings Rate = " + this.calcSavingsRate());
-    
-  }
-
   retireCalcs(){
     let multiplier = this.getMultiplier();
     let savingsRate = this.calcSavingsRate();
@@ -143,22 +59,16 @@ class Home extends React.Component {
     console.log("multiplier = " + multiplier);
     console.log("amountNeededToRetire = " + amountNeededToRetire);
     console.log("savingsRate = " + savingsRate);
-    // alert("yearsToRetire = " + yearsToRetire);
     console.log("yearsToRetire = " + yearsToRetire);
-    // alert("withdrawalRate = " + withdrawalRate);
     console.log("withdrawalRate = " + withdrawalRate);
-    // alert("withdrawalAmount = " + this.state.withdrawalAmount);
     console.log("withdrawalAmount = " + withdrawalAmount);
-    // alert("amountNeededToSave = " + amountNeededToSave);
     console.log("amountNeededToSave = " + amountNeededToSave);
-    // alert("yearsToDeplete = " + yearsToDeplete);
     console.log("yearsToDeplete = " + yearsToDeplete);  
 
   }
 
   getAmountNeededToRetire(){
     let amountNeededToRetire = parseFloat(this.state.yearlyExpenses.replace(',','') * this.getMultiplier());
-    // alert("amountNeededToRetire = " + amountNeededToRetire);
     return amountNeededToRetire;
   }
 
@@ -179,11 +89,8 @@ class Home extends React.Component {
   calcSavingsRate(){
     // returns the savings rate of the user
     let yearlySavings = this.state.yearlySavings.replace(',','');
-    // alert("yearlySavings = " + yearlySavings)
     let annualIncomeAfterTaxes = this.state.annualIncomeAfterTaxes.replace(',','');
-    // alert("annualIncomeAfterTaxes = " + annualIncomeAfterTaxes)
     let savingsRate = Math.round(yearlySavings / annualIncomeAfterTaxes * 100, 0);
-    // alert("savingsRate = " + savingsRate)
     return savingsRate;
   }
 
@@ -199,10 +106,8 @@ class Home extends React.Component {
     let PV = this.state.portfolioBalance.replace(',','');
     let C = this.state.yearlySavings.replace(',','');
     let r = this.state.rateOfReturn.replace(',','');
-    // let FV = this.state.yearlyExpenses.replace(',','') * this.getMultiplier();
     let FV = this.getAmountNeededToRetire();
 
-    // alert("tvmPeriods values = " + PV + " " + C + " " + r + " " + FV);
     console.log("tvmPeriods FV values = " + FV);
     let n = 0;
 
@@ -212,8 +117,6 @@ class Home extends React.Component {
     n = Math.log(n);
     n = n / (Math.log(1 + r));
     n = Math.ceil(n * 10) / 10;
-
-    // alert("calcYearsToRetire = " + n);
 
     return n;
   }
@@ -273,11 +176,11 @@ class Home extends React.Component {
     }
   }
 
-  // FORM
   renderForm() {
     const {errors} = this.state;
     return (
-          <Form onSubmit={ this.handleSubmit } noValidate>
+          // <Form>
+          <Form onSubmit={ this.handleSubmit } noValidate> 
             <h3 className='home_title'>Calculate Your FI Date:</h3>
           <FormGroup as={Row} controlId="1" className='home_text'>
             <Label column sm={2}>
@@ -289,8 +192,7 @@ class Home extends React.Component {
                 name="age"
                 placeholder="Age" 
                 value={this.state.age} 
-                onChange={this.myChangeHandler}
-                noValidate
+                onChange={this.handleChange}
                 />
                  {errors.age.length > 0 && 
                 <span className='error'>{errors.age}</span>}
@@ -307,8 +209,8 @@ class Home extends React.Component {
                 name="annualIncomeAfterTaxes"
                 placeholder="50,000" 
                 value={this.state.annualIncomeAfterTaxes} 
-                onChange={this.myChangeHandler}
-                noValidate
+                onChange={this.handleChange}
+              
                 />
                  {errors.annualIncomeAfterTaxes.length > 0 && 
                 <span className='error'>{errors.annualIncomeAfterTaxes}</span>}
@@ -325,7 +227,7 @@ class Home extends React.Component {
                 name="yearlyExpenses"
                 placeholder="30,000" 
                 value={this.state.yearlyExpenses} 
-                onChange={this.myChangeHandler}
+                onChange={this.handleChange}
                 aria-describedby="expensesHelpBlock"
             />
              {errors.yearlyExpenses.length > 0 && 
@@ -346,7 +248,7 @@ class Home extends React.Component {
                 name="yearlySavings"
                 placeholder="20,000" 
                 value={this.state.yearlySavings} 
-                onChange={this.myChangeHandler}
+                onChange={this.handleChange}
                 aria-describedby="savingsHelpBlock"
             />
              {errors.yearlySavings.length > 0 && 
@@ -367,7 +269,7 @@ class Home extends React.Component {
                 name="portfolioBalance"
                 placeholder="20,000" 
                 value={this.state.portfolioBalance} 
-                onChange={this.myChangeHandler}
+                onChange={this.handleChange}
                 aria-describedby="portfolioHelpBlock"
             />
              {errors.portfolioBalance.length > 0 && 
@@ -391,7 +293,7 @@ class Home extends React.Component {
                 name="rateOfReturn"
                 value={this.state.rateOfReturn}
                 placeholder="5.0" 
-                onChange={this.myChangeHandler}
+                onChange={this.handleChange}
             />
              {errors.rateOfReturn.length > 0 && 
                 <span className='error'>{errors.rateOfReturn}</span>}
@@ -408,7 +310,7 @@ class Home extends React.Component {
                 name="withdrawalAmount"
                 value={this.state.withdrawalAmount}
                 placeholder="4.0" 
-                onChange={this.myChangeHandler} 
+                onChange={this.handleChange} 
                 aria-describedby="withdrawalAmountHelpBlock"
                 />
                  {errors.withdrawalAmount.length > 0 && 
@@ -428,7 +330,7 @@ class Home extends React.Component {
                 type="text" 
                 name="riskTolerance" 
                 value={this.state.riskTolerance} 
-                onChange={this.myChangeHandler}
+                onChange={this.handleChange}
                 >
                   <option value="1">Low - Save More than Needed</option>
                   <option value="2">Medium - Save Recommended Amount</option>
@@ -439,11 +341,154 @@ class Home extends React.Component {
 
           <FormGroup as={Row} className='home_text'>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit" onClick={this.handleSubmit}>Calculate FI Date!</Button>
+              {/* <Button type="submit" onClick={this.handleSubmit}>Calculate FI Date!</Button> */}
+              <Button type="submit">Calculate FI Date!</Button>
             </Col>
           </FormGroup>
         </Form>
     );  
+  }
+
+  handleSubmit(e) {
+    console.log("handleSubmit", this.state.submitDisabled) // add it here
+    const {age, annualIncomeAfterTaxes, yearlyExpenses, yearlySavings, portfolioBalance, 
+           rateOfReturn, withdrawalAmount, riskTolerance} = this.state;
+    let errors = {
+      age: '',
+      annualIncomeAfterTaxes: '',
+      yearlyExpenses: '',
+      yearlySavings: '',
+      portfolioBalance: '',
+      rateOfReturn: '',
+      withdrawalAmount: '',
+      riskTolerance: ''
+    };
+    let errorCount = 0;
+
+    if (!age) {
+      errorCount += 1;
+      errors.age = 'Field is required.';
+     }
+    if (!annualIncomeAfterTaxes) {
+       errorCount += 1;
+       errors.annualIncomeAfterTaxes = 'Field is required.'
+     }
+    if (!yearlyExpenses) {
+      errorCount += 1;
+      errors.yearlyExpenses = 'Field is required.'
+    }
+    if (!yearlySavings) {
+      errorCount += 1;
+      errors.yearlySavings = 'Field is required.'
+    }
+    if (!portfolioBalance) {
+      errorCount += 1;
+      errors.portfolioBalance = 'Field is required.'
+    }
+    if (!rateOfReturn) {
+      errorCount += 1;
+      errors.rateOfReturn = 'Field is required.'
+    }
+    if (!withdrawalAmount) {
+      errorCount += 1;
+      errors.withdrawalAmount = 'Field is required.'
+    }
+    if (!riskTolerance) {
+      errorCount += 1;
+      errors.riskTolerance = 'Field is required.'
+    }
+    
+    this.setState({ errors });
+
+    if(errorCount > 0) {
+      e.preventDefault();
+      console.error('Invalid Form');
+      console.log(this.state.errors);
+    } else {
+      console.info('Valid Form');
+      this.retireCalcs();
+      this.setState({ status: "results" });
+    }
+
+    // if(validateForm(this.state.errors)) {
+    //   e.preventDefault();
+    //   console.error('Invalid Form');
+    //   console.log(this.state.errors);
+    // }else{
+    //   console.info('Valid Form');
+    //   this.retireCalcs();
+    //   this.setState({ status: "results" });
+    // }
+
+    console.log('The link was clicked.');
+    console.log(`Age: ${this.state.age}`);
+    console.log(`Annual Income After Taxes: ${this.state.annualIncomeAfterTaxes}`);
+    console.log(`Yearly Expenses: ${this.state.yearlyExpenses}`);
+    console.log(`Yearly Savings: ${this.state.yearlySavings}`);
+    console.log(`Portfolio Balance: ${this.state.portfolioBalance}`);
+    console.log(`Rate of Return: ${this.state.rateOfReturn}`);
+    console.log(`Withdrawal Amount: ${this.state.withdrawalAmount}`);
+    console.log(`Risk Tolerance: ${this.state.riskTolerance}`);
+    console.log("Savings Rate = " + this.calcSavingsRate());
+    
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    let name = event.target.name; // pulls from "name" attribute in input
+    let value = event.target.value; // pulls from "value" attribute in input
+    let errors = this.state.errors;
+
+    switch (name) {
+      case 'age': 
+        errors.age = 
+          // value > 110 
+          validIntegerRegex.test(value)
+          // (Number.isInteger(value) || value > 0)
+            ? ''
+            : 'Age must be a whole, positive number.';
+        break;
+      case 'annualIncomeAfterTaxes': 
+        errors.annualIncomeAfterTaxes = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'yearlyExpenses': 
+        errors.yearlyExpenses = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'yearlySavings': 
+        errors.yearlySavings = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'portfolioBalance': 
+        errors.portfolioBalance = 
+          validNumberRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number.';
+        break;
+      case 'rateOfReturn': 
+        errors.rateOfReturn = 
+          validDecimalRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number with no commas. Decimals optional.';
+          break;
+      case 'withdrawalAmount':
+        errors.withdrawalAmount = 
+          validDecimalRegex.test(value)
+            ? ''
+            : 'Input is not valid! Must be a number with no commas. Decimals optional.';
+          break;
+      default:
+        break;
+    }
+
+    this.setState({errors, [name]: value});
   }
 
   render() {
