@@ -9,6 +9,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
+    "lodash": "^4.17.20",
+    "lodash.update": "^4.10.2",
     "npm-scripts": "^1.4.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
