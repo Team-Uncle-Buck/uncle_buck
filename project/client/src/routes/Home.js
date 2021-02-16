@@ -31,7 +31,7 @@ class Home extends React.Component {
       portfolioBalance: '',
       rateOfReturn: '',
       withdrawalAmount: '',
-      riskTolerance: '',
+      riskTolerance: '1',
       status: 'form',
       errors: {
         age: '',
@@ -342,7 +342,7 @@ class Home extends React.Component {
           <FormGroup as={Row} className='home_text'>
             <Col sm={{ span: 10, offset: 2 }}>
               {/* <Button type="submit" onClick={this.handleSubmit}>Calculate FI Date!</Button> */}
-              <Button type="submit">Calculate FI Date!</Button>
+              <Button type="submit" onClick={this.handleSubmit}>Calculate FI Date!</Button>
             </Col>
           </FormGroup>
         </Form>
@@ -405,20 +405,10 @@ class Home extends React.Component {
       console.error('Invalid Form');
       console.log(this.state.errors);
     } else {
-      console.info('Valid Form');
+      console.log('Valid Form');
       this.retireCalcs();
       this.setState({ status: "results" });
     }
-
-    // if(validateForm(this.state.errors)) {
-    //   e.preventDefault();
-    //   console.error('Invalid Form');
-    //   console.log(this.state.errors);
-    // }else{
-    //   console.info('Valid Form');
-    //   this.retireCalcs();
-    //   this.setState({ status: "results" });
-    // }
 
     console.log('The link was clicked.');
     console.log(`Age: ${this.state.age}`);
